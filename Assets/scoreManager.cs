@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class scoreManager : MonoBehaviour
 {
@@ -17,6 +18,20 @@ public class scoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (score > 50){
+            SceneManager.LoadScene("Level2");
+        }
         
+    }
+    public void AddScore()
+    {
+        score += 10;
+        scoreText.text = "SCORE:" + score.ToString();
+    }
+
+    public void SubScore()
+    {
+        score -= 10;
+        scoreText.text = "SCORE:" + score.ToString();
     }
 }
