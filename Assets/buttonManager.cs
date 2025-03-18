@@ -1,33 +1,105 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class buttonManager : MonoBehaviour
+public class ButtonManager : MonoBehaviour
 {
-    public Button[] messageButtons; // Assign Message Buttons in Inspector
+    public MessageData messageData;
+    private List<MessageData.Message> activeMessages;
+    
+    [Header("UI Elements")]
+    public List<Button> messageButtons;
+    public TextMeshProUGUI messageText;
+    public ScoreManager scoreManager;
+    public HintManager hintManager;
+
     private int currentIndex = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
-        for (int i = 1; i < messageButtons.Length; i++)
+        // Automatically load MessageDatabase if not assigned
+        if (messageData == null)
         {
-            messageButtons[i].interactable = false;
+            messageData = Resources.Load<MessageData>("MessageDatabase");
+
+            if (messageData == null)
+            {
+                Debug.LogError("MessageDatabase not found! Make sure it is inside the 'Resources' folder.");
+                return;
+            }
         }
-    }
-    public void UnlockNextButton()
-    {
-        if (currentIndex < messageButtons.Length - 1)
+
+        // Automatically find all buttons in the scene if not assigned
+        if (messageButtons == null || messageButtons.Count == 0)
         {
-            currentIndex++;
-            messageButtons[currentIndex].interactable = true; // Enable next button
+            messageButtons = new List<Button>(FindObjectsOfType<Button>());
+        }
+
+        // Automatically find TextMeshProUGUI if not assigned
+        if (messageText == null)
+        {
+            messageText = FindObjectOfType<TextMeshProUGUI>();
+            if (messageText == null)
+            {
+                Debug.LogError("No TextMeshProUGUI component found in the scene!");
+            }
+        }
+
+        // Load messages, shuffle them, and display the first one
+        activeMessages = new List<MessageData.Message>(messageData.messages);
+        ShuffleMessages();
+        DisplayMessage();
+    }
+
+    private void ShuffleMessages()
+    {
+        for (int i = activeMessages.Count - 1; i > 0; i--)
+        {
+            int rand = Random.Range(0, i + 1);
+            var temp = activeMessages[i];
+            activeMessages[i] = activeMessages[rand];
+            activeMessages[rand] = temp;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void DisplayMessage()
     {
-        
+        if (currentIndex < activeMessages.Count)
+        {
+            messageText.text = activeMessages[currentIndex].text;
+            hintManager.UpdateHint(activeMessages[currentIndex].hint);
+        }
+        else
+        {
+            messageText.text = "No more messages!";
+        }
+    }
+
+    public void OnUserChoice(bool userChoice)
+    {
+        if (currentIndex >= activeMessages.Count) return;
+
+        bool correct = (userChoice == activeMessages[currentIndex].isScam);
+
+        if (correct)
+        {
+            scoreManager.AddScore();
+            currentIndex++;
+            if (currentIndex < activeMessages.Count)
+                DisplayMessage();
+            else
+                messageText.text = "Game Over! Well done!";
+        }
+        else
+        {
+            scoreManager.SubScore();
+            messageText.text = GetNewMessage();
+        }
+    }
+
+    private string GetNewMessage()
+    {
+        return "Incorrect! Try again with a different message.";
     }
 }

@@ -1,37 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class scoreManager : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
-
     public Text scoreText;
-    int score = 0;
-    // Start is called before the first frame update
+    private int score = 0;
+    private const int maxScore = 50;
+
     void Start()
     {
-        scoreText.text = "SCORE:" + score.ToString();
+        UpdateScoreUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateScoreUI()
     {
-        if (score > 50){
-            SceneManager.LoadScene("Level2");
-        }
-        
+        scoreText.text = "SCORE: " + score.ToString();
     }
+
     public void AddScore()
     {
         score += 10;
-        scoreText.text = "SCORE:" + score.ToString();
+        UpdateScoreUI();
+        CheckLevelProgress();
     }
 
     public void SubScore()
     {
-        score -= 10;
-        scoreText.text = "SCORE:" + score.ToString();
+        score = Mathf.Max(0, score - 10);  // Prevent negative scores
+        UpdateScoreUI();
+    }
+
+    private void CheckLevelProgress()
+    {
+        if (score >= maxScore)
+        {
+            SceneManager.LoadScene("Level2");
+        }
     }
 }

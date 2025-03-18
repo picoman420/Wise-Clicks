@@ -10,15 +10,7 @@ public class LevelsMenu : MonoBehaviour
 
     private void Awake()
     {
-        int unlockedLevels = PlayerPrefs.GetInt("UnlockedLevels", 1);
-        for (int i = 0; i < levelButtons.Length; i++)
-        {
-            levelButtons[i].interactable = false;
-        }
-        for (int i = 0; i < unlockedLevels; i++)
-        {
-            levelButtons[i].interactable = true;
-        }
+
     }
     public void OpenLevel(int levelId)
     {

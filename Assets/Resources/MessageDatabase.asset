@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e0acafd4b68204580c65568385ab88, type: 3}
+  m_Name: MessageDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::MessageData
+  messages:
+  - text: You've won a free iPhone! Click here to claim.
+    isScam: 1
+    hint: If something seems too good to be true, it probably is.
+  - text: Your bank has detected suspicious activity. Click this link to verify.
+    isScam: 1
+    hint: "Banks don\u2019t ask for login credentials via email or text."
+  - text: NASA confirms that the Earth orbits the Sun.
+    isScam: 0
+    hint: A well-known fact from science.
+  - text: Government announces new tax laws for 2025.
+    isScam: 0
+    hint: Check official government websites.
+  - text: MSG5
+    isScam: 0
+    hint: HINT5
