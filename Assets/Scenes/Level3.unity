@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 119052993}
   - component: {fileID: 119052992}
   - component: {fileID: 119052991}
+  - component: {fileID: 119052994}
   m_Layer: 5
   m_Name: HintButton
   m_TagString: Untagged
@@ -205,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 119052992}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 119052994}
+        m_TargetAssemblyTypeName: HintController, Assembly-CSharp
+        m_MethodName: ShowHint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &119052992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +257,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119052989}
   m_CullTransparentMesh: 1
+--- !u!114 &119052994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119052989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ba3ec8e4dc5b44186e5f5b2c1f7cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintText: {fileID: 1681589700}
+  hintDuration: 5
 --- !u!1 &225651057
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,7 +700,6 @@ GameObject:
   - component: {fileID: 517186134}
   - component: {fileID: 517186133}
   - component: {fileID: 517186132}
-  - component: {fileID: 517186131}
   m_Layer: 5
   m_Name: HomeButton
   m_TagString: Untagged
@@ -701,20 +727,6 @@ RectTransform:
   m_AnchoredPosition: {x: 127.19, y: -55}
   m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &517186131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517186129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48ba3ec8e4dc5b44186e5f5b2c1f7cde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hintText: {fileID: 1681589700}
-  hintDuration: 5
 --- !u!114 &517186132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,19 +770,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 517186133}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 517186131}
-        m_TargetAssemblyTypeName: HintController, Assembly-CSharp
-        m_MethodName: ShowHint
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &517186133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1222,7 +1222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1032}
+  m_AnchoredPosition: {x: 161.19, y: 244}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1717318352
@@ -1260,8 +1260,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 600}
+  m_AnchoredPosition: {x: 0, y: 152.37238}
+  m_SizeDelta: {x: 800, y: 1259.2555}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1717318354
 MonoBehaviour:
