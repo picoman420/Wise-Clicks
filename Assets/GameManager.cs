@@ -1,18 +1,19 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance; // Singleton for global access
+    public static GameManager Instance;
     public TMP_Text balanceText; // Reference to BalanceText UI
-    private int accountBalance = 1000; // Starting balance
+    private int accountBalance = 1000;
 
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -23,6 +24,32 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateBalanceUI();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        AssignBalanceText();
+        UpdateBalanceUI();
+    }
+
+    // New method to assign balanceText
+    void AssignBalanceText()
+    {
+        GameObject balanceTextObj = GameObject.Find("BalanceText");
+        if (balanceTextObj != null)
+        {
+            balanceText = balanceTextObj.GetComponent<TMP_Text>();
+        }
+        else
+        {
+            Debug.LogWarning("No BalanceText found in scene: " + SceneManager.GetActiveScene().name);
+        }
     }
 
     public void UpdateBalance(int amount)
@@ -32,12 +59,25 @@ public class GameManager : MonoBehaviour
         if (accountBalance <= 0)
         {
             Debug.Log("Game Over! Balance reached zero.");
-            // Add game over logic here later
         }
     }
 
     void UpdateBalanceUI()
     {
-        balanceText.text = "$" + accountBalance;
+        // If balanceText is null, try to find it
+        if (balanceText == null)
+        {
+            AssignBalanceText();
+        }
+
+        // Only update if balanceText is valid
+        if (balanceText != null)
+        {
+            balanceText.text = "$" + accountBalance;
+        }
+        else
+        {
+            Debug.LogWarning("Cannot update balance UI: balanceText is still null.");
+        }
     }
 }
