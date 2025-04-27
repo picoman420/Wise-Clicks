@@ -8,14 +8,19 @@ public class JobItem : MonoBehaviour
     public Button applyButton; // Apply button
     public Button markScamButton; // Mark as scam button
     private bool isScam; // Is this a scam job?
+    private JobManager jobManager; // Reference to JobManager
 
-    public void Setup(string description, bool scam)
+    public void Setup(string description, bool scam, JobManager manager)
     {
-        jobText.text = description;
+        jobText.text = description; // Set the full description (will wrap automatically)
         isScam = scam;
+        jobManager = manager;
 
         applyButton.onClick.AddListener(OnApplyClicked);
         markScamButton.onClick.AddListener(OnMarkScamClicked);
+
+        // Force layout rebuild to adjust size
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
     void OnApplyClicked()
@@ -29,7 +34,8 @@ public class JobItem : MonoBehaviour
         {
             Debug.Log("Applied to a legit job. Balance unchanged.");
         }
-        Destroy(gameObject); // Remove job after interaction
+        jobManager.OnJobCleared(gameObject);
+        Destroy(gameObject);
     }
 
     void OnMarkScamClicked()
@@ -43,6 +49,7 @@ public class JobItem : MonoBehaviour
         {
             Debug.Log("That wasn’t a scam. No reward.");
         }
-        Destroy(gameObject); // Remove job after marking
+        jobManager.OnJobCleared(gameObject);
+        Destroy(gameObject);
     }
 }
