@@ -12,14 +12,14 @@ public class JobItem : MonoBehaviour
 
     public void Setup(string description, bool scam, JobManager manager)
     {
-        jobText.text = description; // Set the full description (will wrap automatically)
+        jobText.text = description;
         isScam = scam;
         jobManager = manager;
 
         applyButton.onClick.AddListener(OnApplyClicked);
         markScamButton.onClick.AddListener(OnMarkScamClicked);
 
-        // Force layout rebuild to adjust size
+        // Force layout rebuild
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
@@ -27,7 +27,7 @@ public class JobItem : MonoBehaviour
     {
         if (isScam)
         {
-            GameManager.Instance.UpdateBalance(-100); // Deduct $100 for scam
+            GameManager.Instance.UpdateBalance(-100);
             Debug.Log("Applied to a scam job! -$100");
         }
         else
@@ -42,7 +42,7 @@ public class JobItem : MonoBehaviour
     {
         if (isScam)
         {
-            GameManager.Instance.UpdateBalance(50); // Reward $50 for spotting scam
+            GameManager.Instance.UpdateBalance(50);
             Debug.Log("Correctly marked a scam! +$50");
         }
         else
