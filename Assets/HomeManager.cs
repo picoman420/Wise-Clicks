@@ -23,4 +23,8 @@ public class HomeManager : MonoBehaviour
         SceneManager.LoadScene("CallsScene"); // Placeholder for future scene
         Debug.Log("Calls scene not implemented yet!");
     }
+    public void GoToHome()
+    {
+        SceneManager.LoadScene("HomeScene");
+    }
 }

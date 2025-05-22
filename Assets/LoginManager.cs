@@ -26,7 +26,7 @@ public class LoginManager : MonoBehaviour
             // Store username (to be used in GameManager later)
             PlayerPrefs.SetString("PlayerName", username);
             PlayerPrefs.Save();
-            SceneManager.LoadScene("HomePage");
+            SceneManager.LoadScene("HomeScene");
         }
         else
         {
