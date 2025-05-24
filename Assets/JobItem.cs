@@ -25,6 +25,7 @@ public class JobItem : MonoBehaviour
 
     void OnApplyClicked()
     {
+        bool isCorrectDecision = !isScam; // Correct if applying to a legit job
         if (isScam)
         {
             GameManager.Instance.UpdateBalance(-100);
@@ -34,12 +35,13 @@ public class JobItem : MonoBehaviour
         {
             Debug.Log("Applied to a legit job. Balance unchanged.");
         }
-        jobManager.OnJobCleared(gameObject);
+        jobManager.OnJobCleared(gameObject, isCorrectDecision);
         Destroy(gameObject);
     }
 
     void OnMarkScamClicked()
     {
+        bool isCorrectDecision = isScam; // Correct if marking a scam job
         if (isScam)
         {
             GameManager.Instance.UpdateBalance(50);
@@ -49,7 +51,7 @@ public class JobItem : MonoBehaviour
         {
             Debug.Log("That wasn’t a scam. No reward.");
         }
-        jobManager.OnJobCleared(gameObject);
+        jobManager.OnJobCleared(gameObject, isCorrectDecision);
         Destroy(gameObject);
     }
 }

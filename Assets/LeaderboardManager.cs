@@ -1,55 +1,93 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-using UnityEngine.UI; // Added this line to resolve Button reference
 
 public class LeaderboardManager : MonoBehaviour
 {
-    public GameObject leaderboardPanel; // Leaderboard UI panel
-    public TMP_Text entryTemplate; // Template for leaderboard entries
-    public GameObject closeButton; // Close button for the panel
-
-    private List<TMP_Text> entryTexts = new List<TMP_Text>();
+    public TextMeshProUGUI firstPlace;
+    public TextMeshProUGUI secondPlace;
+    public TextMeshProUGUI thirdPlace;
+    public TextMeshProUGUI playerNameText; // Add this for displaying player's name
+    public Transform contentPanel;
+    public GameObject entryPrefab;
 
     void Start()
     {
-        // Hide panel initially
-        leaderboardPanel.SetActive(false);
-        entryTemplate.gameObject.SetActive(false); // Hide template
-
-        // Add button listeners
-        closeButton.GetComponent<Button>().onClick.AddListener(HideLeaderboard);
-    }
-
-    public void ShowLeaderboard()
-    {
-        // Clear previous entries
-        foreach (var entry in entryTexts)
+        // Set up back button
+        GameObject backButton = GameObject.Find("BackButton");
+        if (backButton != null)
         {
-            Destroy(entry.gameObject);
+            backButton.GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadScene("HomeScene"));
         }
-        entryTexts.Clear();
+
+        // Display player's name
+        if (playerNameText != null)
+        {
+            string playerName = GameManager.Instance.GetPlayerName();
+            playerNameText.text = $"Player: {playerName}";
+        }
 
         // Load and display leaderboard
-        List<LeaderboardEntry> leaderboard = GameManager.Instance.LoadLeaderboard();
-        leaderboard.Sort((a, b) => b.score.CompareTo(a.score)); // Sort descending
-
-        for (int i = 0; i < leaderboard.Count; i++)
-        {
-            TMP_Text newEntry = Instantiate(entryTemplate, entryTemplate.transform.parent);
-            newEntry.text = $"{i + 1}. {leaderboard[i].name} - ${leaderboard[i].score}";
-            newEntry.gameObject.SetActive(true);
-            entryTexts.Add(newEntry);
-
-            // Force layout rebuild
-            LayoutRebuilder.ForceRebuildLayoutImmediate(newEntry.GetComponent<RectTransform>().parent.GetComponent<RectTransform>());
-        }
-
-        leaderboardPanel.SetActive(true);
+        DisplayLeaderboard();
     }
 
-    public void HideLeaderboard()
+    void DisplayLeaderboard()
     {
-        leaderboardPanel.SetActive(false);
+        List<LeaderboardEntry> leaderboard = GameManager.Instance.LoadLeaderboard();
+        string currentPlayer = GameManager.Instance.GetPlayerName();
+
+        // Clear existing entries
+        foreach (Transform child in contentPanel)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Populate top 3
+        if (leaderboard.Count > 0)
+        {
+            firstPlace.text = $"1\n{leaderboard[0].name}\n★ {leaderboard[0].score}";
+            UpdateTextMaterial(firstPlace, leaderboard[0].name == currentPlayer);
+        }
+        if (leaderboard.Count > 1)
+        {
+            secondPlace.text = $"2\n{leaderboard[1].name}\n★ {leaderboard[1].score}";
+            UpdateTextMaterial(secondPlace, leaderboard[1].name == currentPlayer);
+        }
+        if (leaderboard.Count > 2)
+        {
+            thirdPlace.text = $"3\n{leaderboard[2].name}\n★ {leaderboard[2].score}";
+            UpdateTextMaterial(thirdPlace, leaderboard[2].name == currentPlayer);
+        }
+
+        // Populate remaining entries
+        for (int i = 3; i < leaderboard.Count && i < 5; i++) // Top 5 to match maxLeaderboardEntries
+        {
+            GameObject entry = Instantiate(entryPrefab, contentPanel);
+            TextMeshProUGUI entryText = entry.GetComponent<TextMeshProUGUI>();
+            if (entryText != null)
+            {
+                entryText.text = $"{i + 1}\n{leaderboard[i].name}\n★ {leaderboard[i].score}";
+                UpdateTextMaterial(entryText, leaderboard[i].name == currentPlayer);
+            }
+        }
+    }
+
+    void UpdateTextMaterial(TextMeshProUGUI text, bool isCurrentPlayer)
+    {
+        if (text != null)
+        {
+            text.enabled = false;
+            text.enabled = true;
+            if (isCurrentPlayer)
+            {
+                text.color = Color.green; // Highlight the current player's entry
+            }
+            else
+            {
+                text.color = Color.black; // Reset to default color
+            }
+        }
     }
 }

@@ -5,6 +5,6 @@ public class HomeButton : MonoBehaviour
 {
     public void GoHome()
     {
-        SceneManager.LoadScene("HomeScene");
+        SceneManager.LoadScene("LevelScene");
     }
 }

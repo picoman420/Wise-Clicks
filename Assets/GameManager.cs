@@ -2,12 +2,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public TMP_Text balanceText; // Reference to BalanceText UI
     private int accountBalance = 1000;
+    private string playerName = "Player"; // Default name
 
     private const int maxLeaderboardEntries = 5;
     private const string leaderboardKey = "Leaderboard";
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         UpdateBalanceUI();
         SceneManager.sceneLoaded += OnSceneLoaded;
+        Debug.Log($"GameManager initialized with playerName: {playerName}");
     }
 
     void OnDestroy()
@@ -40,9 +43,9 @@ public class GameManager : MonoBehaviour
     {
         AssignBalanceText();
         UpdateBalanceUI();
+        Debug.Log($"Scene loaded: {scene.name}, current playerName: {playerName}");
     }
 
-    // New method to assign balanceText
     void AssignBalanceText()
     {
         GameObject balanceTextObj = GameObject.Find("BalanceText");
@@ -54,6 +57,20 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("No BalanceText found in scene: " + SceneManager.GetActiveScene().name);
         }
+    }
+
+    public void SetPlayerName(string name)
+    {
+        if (!string.IsNullOrEmpty(name))
+        {
+            playerName = name;
+            Debug.Log($"Player name set to: {playerName}");
+        }
+    }
+
+    public string GetPlayerName()
+    {
+        return playerName;
     }
 
     public void UpdateBalance(int amount)
@@ -68,13 +85,11 @@ public class GameManager : MonoBehaviour
 
     void UpdateBalanceUI()
     {
-        // If balanceText is null, try to find it
         if (balanceText == null)
         {
             AssignBalanceText();
         }
 
-        // Only update if balanceText is valid
         if (balanceText != null)
         {
             balanceText.text = "$" + accountBalance;
@@ -84,7 +99,8 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Cannot update balance UI: balanceText is still null.");
         }
     }
-    public void SaveScore(string playerName, int score)
+
+    public void SaveScore(int score)
     {
         List<LeaderboardEntry> leaderboard = LoadLeaderboard();
         leaderboard.Add(new LeaderboardEntry { name = playerName, score = score });
@@ -102,9 +118,9 @@ public class GameManager : MonoBehaviour
         }
         PlayerPrefs.SetInt($"{leaderboardKey}_count", leaderboard.Count);
         PlayerPrefs.Save();
+        Debug.Log($"Score saved for {playerName} with score {score}");
     }
 
-    // Load the leaderboard
     public List<LeaderboardEntry> LoadLeaderboard()
     {
         List<LeaderboardEntry> leaderboard = new List<LeaderboardEntry>();
@@ -115,11 +131,10 @@ public class GameManager : MonoBehaviour
             int score = PlayerPrefs.GetInt($"{leaderboardKey}_{i}_score", 0);
             leaderboard.Add(new LeaderboardEntry { name = name, score = score });
         }
-        return leaderboard;
+        return leaderboard.OrderByDescending(entry => entry.score).ToList();
     }
 }
 
-// Struct to hold leaderboard data
 [System.Serializable]
 public struct LeaderboardEntry
 {

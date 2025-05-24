@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine.UI; // For LayoutRebuilder
+using UnityEngine.SceneManagement; // For scene navigation
 
 public class JobManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class JobManager : MonoBehaviour
     private Queue<JobData> jobQueue = new Queue<JobData>(); // Jobs to display
     private List<GameObject> activeJobs = new List<GameObject>(); // Current jobs in panel
     private const int maxJobsDisplayed = 5; // Max jobs shown at once
+    private int totalJobsProcessed = 0; // Track total jobs for scoring
+    private int correctDecisions = 0; // Track correct scam/legit decisions
 
     [System.Serializable]
     private struct JobData
@@ -121,7 +124,6 @@ public class JobManager : MonoBehaviour
         {
             SpawnJob();
         }
-        // Force layout rebuild after spawning all jobs
         LayoutRebuilder.ForceRebuildLayoutImmediate(jobListPanel.GetComponent<RectTransform>());
     }
 
@@ -130,6 +132,7 @@ public class JobManager : MonoBehaviour
         if (jobQueue.Count == 0)
         {
             Debug.Log("No more jobs in queue!");
+            CheckLevelCompletion();
             return;
         }
 
@@ -139,17 +142,46 @@ public class JobManager : MonoBehaviour
         jobItem.Setup(jobData.description, jobData.isScam, this);
         activeJobs.Add(job);
 
-        // Force layout rebuild after adding a new job
         LayoutRebuilder.ForceRebuildLayoutImmediate(jobListPanel.GetComponent<RectTransform>());
     }
 
-    public void OnJobCleared(GameObject jobObject)
+    public void OnJobCleared(GameObject jobObject, bool isCorrectDecision)
     {
+        totalJobsProcessed++;
+        if (isCorrectDecision)
+        {
+            correctDecisions++;
+            GameManager.Instance.UpdateBalance(100); // Reward for correct decision
+        }
+        else
+        {
+            GameManager.Instance.UpdateBalance(-200); // Penalty for incorrect decision
+        }
+
         activeJobs.Remove(jobObject);
         if (activeJobs.Count < maxJobsDisplayed)
         {
             SpawnJob();
         }
+    }
+
+    private void CheckLevelCompletion()
+    {
+        if (jobQueue.Count == 0 && activeJobs.Count == 0)
+        {
+            OnLevelComplete();
+        }
+    }
+
+    void OnLevelComplete()
+    {
+        // Calculate score based on correct decisions and balance
+        int score = correctDecisions * 100; // 100 points per correct decision
+        GameManager.Instance.SaveScore(score);
+        Debug.Log($"Level Complete! Score: {score}, Correct Decisions: {correctDecisions}/{totalJobsProcessed}");
+
+        // Navigate to HomeScene or another scene after completion
+        SceneManager.LoadScene("HomeScene");
     }
 
     private void Shuffle<T>(List<T> list)

@@ -1,36 +1,47 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LoginManager : MonoBehaviour
 {
-    public TMP_InputField usernameInput;
+    public TMP_InputField nameInputField;
 
     void Start()
     {
-        GameObject okButton = GameObject.Find("OKButton");
-        if (okButton != null)
+        GameObject loginButton = GameObject.Find("LoginButton");
+        if (loginButton != null)
         {
-            okButton.GetComponent<Button>().onClick.AddListener(OnLoginClicked);
+            loginButton.GetComponent<Button>().onClick.AddListener(OnLoginClicked);
         }
-
-        usernameInput = GameObject.Find("InputPlayerName").GetComponent<TMP_InputField>();
+        else
+        {
+            Debug.LogWarning("LoginButton not found in scene!");
+        }
     }
 
     void OnLoginClicked()
     {
-        string username = usernameInput.text.Trim();
-        if (!string.IsNullOrEmpty(username))
+        if (nameInputField == null)
         {
-            // Store username (to be used in GameManager later)
-            PlayerPrefs.SetString("PlayerName", username);
-            PlayerPrefs.Save();
+            Debug.LogError("nameInputField is not assigned in the Inspector!");
+            return;
+        }
+
+        string playerName = nameInputField.text.Trim();
+        if (!string.IsNullOrEmpty(playerName))
+        {
+            if (GameManager.Instance == null)
+            {
+                Debug.LogError("GameManager.Instance is null! Ensure GameManager is in an initial scene.");
+                return;
+            }
+            GameManager.Instance.SetPlayerName(playerName);
             SceneManager.LoadScene("HomeScene");
         }
         else
         {
-            Debug.LogWarning("Username cannot be empty!");
+            Debug.LogWarning("Please enter a valid name.");
         }
     }
 }

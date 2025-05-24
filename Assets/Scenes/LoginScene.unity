@@ -867,7 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14d911e983c44a46a9299abdff2ebe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usernameInput: {fileID: 0}
+  nameInputField: {fileID: 500938782}
 --- !u!4 &1583398472
 Transform:
   m_ObjectHideFlags: 0
@@ -895,7 +895,7 @@ GameObject:
   - component: {fileID: 1635487286}
   - component: {fileID: 1635487285}
   m_Layer: 5
-  m_Name: OKButton
+  m_Name: LoginButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
