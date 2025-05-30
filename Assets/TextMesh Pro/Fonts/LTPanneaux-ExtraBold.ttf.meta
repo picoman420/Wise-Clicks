@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 2a0ab1762db0b1143a6461e2bcdf23ab
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - LT Panneaux
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6791eadf0f0c6ee44ae57f1352fbbb3b, type: 3}
+  - {fileID: 12800000, guid: 34c90b48697818b4ba4947880d2a5364, type: 3}
+  - {fileID: 12800000, guid: 34b805dab94ed4148be5fb3f14974d63, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
