@@ -10,51 +10,30 @@ public class HomeSceneManager : MonoBehaviour
 
     void Start()
     {
-        // Navigation buttons
-        GameObject newGameButton = GameObject.Find("NewGameButton");
-        if (newGameButton != null)
-        {
-            newGameButton.GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadScene("LevelScene"));
-        }
-
-        GameObject leaderboardButton = GameObject.Find("LeaderBoardButton");
-        if (leaderboardButton != null)
-        {
-            leaderboardButton.GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadScene("LeaderboardScene"));
-        }
-
-        GameObject settingsButton = GameObject.Find("SettingsButton");
-        if (settingsButton != null)
-        {
-            settingsButton.GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadScene("SettingsScene"));
-        }
-
-        GameObject backButton = GameObject.Find("BackButton");
-        if (backButton != null)
-        {
-            backButton.GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadScene("StartScene"));
-        }
-
-        // Bottom buttons
-        GameObject infoButton = GameObject.Find("InfoButton");
-        if (infoButton != null)
-        {
-            infoButton.GetComponent<Button>().onClick.AddListener(OpenInfoPanel);
-        }
-
-        GameObject exitButton = GameObject.Find("ExitButton");
-        if (exitButton != null)
-        {
-            exitButton.GetComponent<Button>().onClick.AddListener(OpenExitPanel);
-        }
-
         // Ensure panels and overlay are hidden at start, main UI is visible
         if (exitPanel != null) exitPanel.SetActive(false);
         if (infoPanel != null) infoPanel.SetActive(false);
         if (mainUIContainer != null) mainUIContainer.SetActive(true);
     }
 
-    void OpenExitPanel()
+    public void LoadLevelScene()
+    {
+        SceneManager.LoadScene("LevelScene");
+    }
+
+    public void LoadLeaderboardScene()
+    {
+        SceneManager.LoadScene("LeaderboardScene");
+    }
+
+    public void LoadSettingsScene()
+    {
+        SceneManager.LoadScene("SettingsScene");
+    }
+
+
+
+    public void OpenExitPanel()
     {
         if (exitPanel != null)
         {
@@ -64,7 +43,7 @@ public class HomeSceneManager : MonoBehaviour
         }
     }
 
-    void OpenInfoPanel()
+    public void OpenInfoPanel()
     {
         if (infoPanel != null)
         {

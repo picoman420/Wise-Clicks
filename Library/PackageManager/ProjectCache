@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638841850038464655
-    m_Hash: 956922747
+      ticks: 638844255279623595
+    m_Hash: 2910946179
   m_LockFileStatus:
     m_FilePath: C:/Users/qingw/OneDrive/Desktop/Wise-Clicks (WSS)/Wise-Clicks/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638841850038524711
-    m_Hash: 2419766774
+      ticks: 638844255279633576
+    m_Hash: 3703255063
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

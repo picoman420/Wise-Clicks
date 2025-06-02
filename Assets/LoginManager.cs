@@ -7,20 +7,7 @@ public class LoginManager : MonoBehaviour
 {
     public TMP_InputField nameInputField;
 
-    void Start()
-    {
-        GameObject loginButton = GameObject.Find("LoginButton");
-        if (loginButton != null)
-        {
-            loginButton.GetComponent<Button>().onClick.AddListener(OnLoginClicked);
-        }
-        else
-        {
-            Debug.LogWarning("LoginButton not found in scene!");
-        }
-    }
-
-    void OnLoginClicked()
+    public void OnLoginClicked()
     {
         if (nameInputField == null)
         {
