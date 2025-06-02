@@ -15,11 +15,11 @@ C:/Users/qingw/OneDrive/Desktop/Wise-Clicks (WSS)/Wise-Clicks
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-56107
+56458
 Successfully changed project path to: C:/Users/qingw/OneDrive/Desktop/Wise-Clicks (WSS)/Wise-Clicks
 C:/Users/qingw/OneDrive/Desktop/Wise-Clicks (WSS)/Wise-Clicks
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 34.38 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 34.18 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.7f1 (dd97f2c94397)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/Resources/UnitySubsystems
@@ -35,82 +35,74 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56020
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56924
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001058 seconds.
+Registered in 0.001100 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 24.59 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 22.83 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.905 seconds
+- Completed reload, in  1.976 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001106 seconds.
+Registered in 0.000836 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 26.15 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 25.52 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.580 seconds
+- Completed reload, in  0.551 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.69 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.40 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1938 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 90.4 MB.
 System memory in use after: 90.5 MB.
 
 Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2373.
-Total: 3.560800 ms (FindLiveObjects: 0.842200 ms CreateObjectMapping: 0.055600 ms MarkObjects: 2.546300 ms  DeleteObjects: 0.115300 ms)
+Total: 1.805000 ms (FindLiveObjects: 0.183200 ms CreateObjectMapping: 0.046100 ms MarkObjects: 1.503400 ms  DeleteObjects: 0.071300 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Scenes/LanguageScene.unity
-  artifactKey: Guid(f35fedaef38c38e458b5fdb4a880ff1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/LanguageScene.unity using Guid(f35fedaef38c38e458b5fdb4a880ff1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4349d84bc2c2c8497158d9c36921fece') in 0.017360 seconds
-  Import took 0.022164 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000286 seconds.
-  path: Assets/Scenes/MessageScene.unity
-  artifactKey: Guid(8cca7e0afea68894f8c44b23ef65fd37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/MessageScene.unity using Guid(8cca7e0afea68894f8c44b23ef65fd37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f04cc9433d7868c8b70068ea5d7adfa1') in 0.009743 seconds
-  Import took 0.013872 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000185 seconds.
-  path: Assets/Scenes/LoginScene.unity
-  artifactKey: Guid(674b92ea1193b434b97788ea5d55a80b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/LoginScene.unity using Guid(674b92ea1193b434b97788ea5d55a80b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5a522f6ea2fa8efdda32553eefec790') in 0.009682 seconds
-  Import took 0.013837 seconds .
+  path: Assets/Scenes/StartScene.unity
+  artifactKey: Guid(b049b1f6a197c86498178735aa42ab29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/StartScene.unity using Guid(b049b1f6a197c86498178735aa42ab29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7ce6d96d4d664e49aee1cfc57c1ad9a') in 0.015433 seconds
+  Import took 0.019660 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.000813 seconds.
+Registered in 0.000781 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.49 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.44 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.514 seconds
+- Completed reload, in  0.486 seconds
 Platform modules already initialized, skipping
 Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
-Refreshing native plugins compatible for Editor in 0.43 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.77 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1918 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 88.4 MB.
 System memory in use after: 88.5 MB.
 
 Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2377.
-Total: 1.568000 ms (FindLiveObjects: 0.197700 ms CreateObjectMapping: 0.043500 ms MarkObjects: 1.309200 ms  DeleteObjects: 0.016200 ms)
+Total: 1.767700 ms (FindLiveObjects: 0.211600 ms CreateObjectMapping: 0.044000 ms MarkObjects: 1.495300 ms  DeleteObjects: 0.015900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 24.343063 seconds.
+  path: Assets/Scenes/HomeScene.unity
+  artifactKey: Guid(51eaf9da454958e44996aec0f3cb5441) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/HomeScene.unity using Guid(51eaf9da454958e44996aec0f3cb5441) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c8cb15024094b422ab950aa338dca90') in 0.020048 seconds
+  Import took 0.025769 seconds .
+
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
