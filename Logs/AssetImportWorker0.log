@@ -15,11 +15,19 @@ C:/Users/Lenovo/Wise Clicks
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
+<<<<<<< HEAD
 55629
 Successfully changed project path to: C:/Users/Lenovo/Wise Clicks
 C:/Users/Lenovo/Wise Clicks
 Using Asset Import Pipeline V2.
 Refreshing native plugins compatible for Editor in 38.48 ms, found 1 plugins.
+=======
+50219
+Successfully changed project path to: C:/Users/qingw/OneDrive/Desktop/Wise-Clicks (WSS)/Wise-Clicks
+C:/Users/qingw/OneDrive/Desktop/Wise-Clicks (WSS)/Wise-Clicks
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 39.74 ms, found 1 plugins.
+>>>>>>> b43f50d184a132b3792fd94395c9adc56a8f5e03
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.7f1 (dd97f2c94397)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Editor/Data/Resources/UnitySubsystems
@@ -32,6 +40,7 @@ Direct3D:
     VRAM:     8062 MB
     Driver:   31.0.101.5522
 Initialize mono
+<<<<<<< HEAD
 Mono path[0] = 'C:/Program Files/Unity/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/etc'
@@ -59,12 +68,42 @@ Platform modules already initialized, skipping
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
 Refreshing native plugins compatible for Editor in 0.41 ms, found 1 plugins.
+=======
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56320
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001576 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 38.12 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.651 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001154 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 35.65 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.813 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+>>>>>>> b43f50d184a132b3792fd94395c9adc56a8f5e03
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1938 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 90.3 MB.
 System memory in use after: 90.4 MB.
 
 Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2373.
+<<<<<<< HEAD
 Total: 1.790700 ms (FindLiveObjects: 0.129100 ms CreateObjectMapping: 0.035800 ms MarkObjects: 1.553000 ms  DeleteObjects: 0.071500 ms)
 
 ========================================================================
@@ -89,6 +128,9 @@ Received Import Request.
   artifactKey: Guid(8852f280874091f45be84ba4c5cff84d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/MessageItemTemplate.prefab using Guid(8852f280874091f45be84ba4c5cff84d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7881a25ba3402f0669a3d1a31a0d4afd') in 0.019781 seconds
   Import took 0.022421 seconds .
+=======
+Total: 2.825300 ms (FindLiveObjects: 0.224500 ms CreateObjectMapping: 0.036600 ms MarkObjects: 2.476200 ms  DeleteObjects: 0.087000 ms)
+>>>>>>> b43f50d184a132b3792fd94395c9adc56a8f5e03
 
 ========================================================================
 Received Import Request.

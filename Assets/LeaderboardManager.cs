@@ -9,25 +9,18 @@ public class LeaderboardManager : MonoBehaviour
     public TextMeshProUGUI firstPlace;
     public TextMeshProUGUI secondPlace;
     public TextMeshProUGUI thirdPlace;
-    public TextMeshProUGUI playerNameText; // Add this for displaying player's name
+    //public TextMeshProUGUI playerNameText; // Add this for displaying player's name
     public Transform contentPanel;
     public GameObject entryPrefab;
 
     void Start()
     {
-        // Set up back button
-        GameObject backButton = GameObject.Find("BackButton");
-        if (backButton != null)
-        {
-            backButton.GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadScene("HomeScene"));
-        }
-
         // Display player's name
-        if (playerNameText != null)
-        {
-            string playerName = GameManager.Instance.GetPlayerName();
-            playerNameText.text = $"Player: {playerName}";
-        }
+        //if (playerNameText != null)
+        //{
+        //    string playerName = GameManager.Instance.GetPlayerName();
+        //    playerNameText.text = $"Player: {playerName}";
+        //}
 
         // Load and display leaderboard
         DisplayLeaderboard();
@@ -45,6 +38,7 @@ public class LeaderboardManager : MonoBehaviour
         }
 
         // Populate top 3
+        // To use transform.GetChild(0).... (to edit the respective points)
         if (leaderboard.Count > 0)
         {
             firstPlace.text = $"1\n{leaderboard[0].name}\n★ {leaderboard[0].score}";
@@ -89,5 +83,10 @@ public class LeaderboardManager : MonoBehaviour
                 text.color = Color.black; // Reset to default color
             }
         }
+    }
+
+    public void BackButtonClick()
+    {
+        SceneManager.LoadScene("HomeScene");
     }
 }
