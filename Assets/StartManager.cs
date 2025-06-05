@@ -4,12 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class StartManager : MonoBehaviour
 {
-    void Start()
+    public void LoadLanguageScene()
     {
-        GameObject startButton = GameObject.Find("StartButton");
-        if (startButton != null)
-        {
-            startButton.GetComponent<Button>().onClick.AddListener(() => SceneManager.LoadScene("LanguageScene"));
-        }
+        SceneManager.LoadScene("LanguageScene");
     }
 }
