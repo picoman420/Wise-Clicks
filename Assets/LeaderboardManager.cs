@@ -3,24 +3,26 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Collections;
 
 public class LeaderboardManager : MonoBehaviour
 {
     public TextMeshProUGUI firstPlace;
     public TextMeshProUGUI secondPlace;
     public TextMeshProUGUI thirdPlace;
-    //public TextMeshProUGUI playerNameText; // Add this for displaying player's name
-    public Transform contentPanel;
-    public GameObject entryPrefab;
+
+    public Transform parentPanel;
+    public GameObject prefabPanel;
+
+    private GameObject entry;
 
     void Start()
     {
-        // Display player's name
-        //if (playerNameText != null)
-        //{
-        //    string playerName = GameManager.Instance.GetPlayerName();
-        //    playerNameText.text = $"Player: {playerName}";
-        //}
+        // Clear existing entries
+        foreach (Transform child in parentPanel)
+        {
+            Destroy(child.gameObject);
+        }
 
         // Load and display leaderboard
         DisplayLeaderboard();
@@ -31,56 +33,71 @@ public class LeaderboardManager : MonoBehaviour
         List<LeaderboardEntry> leaderboard = GameManager.Instance.LoadLeaderboard();
         string currentPlayer = GameManager.Instance.GetPlayerName();
 
-        // Clear existing entries
-        foreach (Transform child in contentPanel)
-        {
-            Destroy(child.gameObject);
-        }
-
         // Populate top 3
-        // To use transform.GetChild(0).... (to edit the respective points)
         if (leaderboard.Count > 0)
         {
-            firstPlace.text = $"1\n{leaderboard[0].name}\n★ {leaderboard[0].score}";
+            firstPlace.text = leaderboard[0].name;
+            // Get the child to set the points
+            GameObject firstPlacePoints = firstPlace.transform.GetChild(0).gameObject;
+            firstPlacePoints.GetComponent<TextMeshProUGUI>().text = leaderboard[0].score.ToString();
+
             UpdateTextMaterial(firstPlace, leaderboard[0].name == currentPlayer);
         }
         if (leaderboard.Count > 1)
         {
-            secondPlace.text = $"2\n{leaderboard[1].name}\n★ {leaderboard[1].score}";
+            secondPlace.text = leaderboard[1].name;
+            // Get the child to set the points
+            GameObject secondPlacePoints = secondPlace.transform.GetChild(0).gameObject;
+            secondPlacePoints.GetComponent<TextMeshProUGUI>().text = leaderboard[1].score.ToString();
+
             UpdateTextMaterial(secondPlace, leaderboard[1].name == currentPlayer);
         }
         if (leaderboard.Count > 2)
         {
-            thirdPlace.text = $"3\n{leaderboard[2].name}\n★ {leaderboard[2].score}";
+            thirdPlace.text = leaderboard[2].name;
+            // Get the child to set the points
+            GameObject thirdPlacePoints = thirdPlace.transform.GetChild(0).gameObject;
+            thirdPlacePoints.GetComponent<TextMeshProUGUI>().text = leaderboard[2].score.ToString();
+
             UpdateTextMaterial(thirdPlace, leaderboard[2].name == currentPlayer);
         }
 
         // Populate remaining entries
-        for (int i = 3; i < leaderboard.Count && i < 5; i++) // Top 5 to match maxLeaderboardEntries
+        for (int i = 3; i < leaderboard.Count && i < 8; i++) // Top 5 to match maxLeaderboardEntries
         {
-            GameObject entry = Instantiate(entryPrefab, contentPanel);
-            TextMeshProUGUI entryText = entry.GetComponent<TextMeshProUGUI>();
-            if (entryText != null)
+            entry = Instantiate(prefabPanel, parentPanel);
+
+            foreach (Transform child in entry.transform)
             {
-                entryText.text = $"{i + 1}\n{leaderboard[i].name}\n★ {leaderboard[i].score}";
-                UpdateTextMaterial(entryText, leaderboard[i].name == currentPlayer);
+                if (child.CompareTag("Rank"))
+                {
+                    child.gameObject.GetComponent<TextMeshProUGUI>().text = (i+1).ToString();
+                }
+                
+                if (child.CompareTag("Name"))
+                {
+                    TextMeshProUGUI nameText = child.gameObject.GetComponent<TextMeshProUGUI>();
+                    
+                    nameText.text = leaderboard[i].name;
+                    UpdateTextMaterial(nameText, leaderboard[i].name == currentPlayer);
+                }
+                
+                if (child.CompareTag("Points"))
+                {
+                    child.gameObject.GetComponent<TextMeshProUGUI>().text = leaderboard[i].score.ToString();
+                }
             }
         }
     }
 
-    void UpdateTextMaterial(TextMeshProUGUI text, bool isCurrentPlayer)
+    void UpdateTextMaterial(TextMeshProUGUI textComp, bool isCurrentPlayer)
     {
-        if (text != null)
+        if (textComp != null)
         {
-            text.enabled = false;
-            text.enabled = true;
+            textComp.enabled = true;
             if (isCurrentPlayer)
             {
-                text.color = Color.green; // Highlight the current player's entry
-            }
-            else
-            {
-                text.color = Color.black; // Reset to default color
+                textComp.fontStyle = FontStyles.Underline; // Highlight the current player's entry
             }
         }
     }
