@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private int accountBalance = 1000;
     private string playerName = "Player"; // Default name
 
-    private const int maxLeaderboardEntries = 5;
+    private const int maxLeaderboardEntries = 10;
     private const string leaderboardKey = "Leaderboard";
 
     void Awake()
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
 
         if (balanceText != null)
         {
-            balanceText.text = "$" + accountBalance;
+            balanceText.text = accountBalance.ToString();
         }
         else
         {
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
         leaderboard.Sort((a, b) => b.score.CompareTo(a.score)); // Sort descending
         if (leaderboard.Count > maxLeaderboardEntries)
         {
-            leaderboard.RemoveAt(leaderboard.Count - 1); // Keep top 5
+            leaderboard.RemoveAt(leaderboard.Count - 1); // Keep top 10
         }
 
         // Save to PlayerPrefs

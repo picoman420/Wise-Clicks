@@ -724,7 +724,9 @@ MonoBehaviour:
     UI & UX Designer: Wong Qing Wei
 
     Project
-    Coordinator: Tan Pheng Khai'
+    Coordinator: Tan Pheng Khai
+
+    Supervisor: Edson C. Tandoc Jr.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ff1f6485925d424aab714afaf8e5b84, type: 2}
   m_sharedMaterial: {fileID: -5011594828576793503, guid: 4ff1f6485925d424aab714afaf8e5b84, type: 2}
@@ -2707,6 +2709,10 @@ PrefabInstance:
     - target: {fileID: 8994949460322179346, guid: 4b65712875fe4de4e9f37fd03d93693d, type: 3}
       propertyPath: m_Name
       value: HeaderBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8994949460322179346, guid: 4b65712875fe4de4e9f37fd03d93693d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b65712875fe4de4e9f37fd03d93693d, type: 3}
