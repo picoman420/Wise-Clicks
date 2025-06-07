@@ -5,11 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< HEAD
-      ticks: 638846880512732270
-=======
       ticks: 638846201784093488
->>>>>>> 993acad3e909d82658a52802c959464824cff799
     m_Hash: 2910946179
   m_LockFileStatus:
     m_FilePath: C:/Users/qingw/OneDrive/Desktop/Wise-Clicks (WSS)/Wise-Clicks/Packages/packages-lock.json
@@ -17,11 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< HEAD
-      ticks: 638846880512732270
-=======
       ticks: 638846201784103464
->>>>>>> 993acad3e909d82658a52802c959464824cff799
     m_Hash: 3703255063
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -182,6 +174,8 @@ m_PackageAssets:
         - 10.1.3
         - 10.1.4
         - 10.2.0
+        - 11.0.0
+        - 12.0.0
         compatible:
         - 5.0.4
         - 5.0.5
@@ -428,6 +422,8 @@ m_PackageAssets:
         - 9.0.3
         - 10.0.0
         - 10.1.0
+        - 10.1.1
+        - 11.0.0
         compatible:
         - 4.0.2
         verified: 4.0.2
@@ -650,6 +646,8 @@ m_PackageAssets:
         - 10.0.6
         - 10.0.7
         - 10.1.0
+        - 11.0.0
+        - 12.0.0
         compatible:
         - 5.1.1
         - 5.1.2
@@ -1635,11 +1633,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 3.0.9
       source: 1
-<<<<<<< HEAD
-      resolvedPath: C:\Users\Lenovo\Wise Clicks\Library\PackageCache\com.unity.textmeshpro@3.0.9
-=======
       resolvedPath: C:\Users\qingw\OneDrive\Desktop\Wise-Clicks (WSS)\Wise-Clicks\Library\PackageCache\com.unity.textmeshpro@3.0.9
->>>>>>> 993acad3e909d82658a52802c959464824cff799
       assetPath: Packages/com.unity.textmeshpro
       name: com.unity.textmeshpro
       displayName: TextMeshPro
@@ -4054,7 +4048,9 @@ m_PackageAssets:
         - 9.0.6
         - 9.0.7
         - 9.1.0
+        - 10.0.0
         - 11.0.0
+        - 11.0.1
         compatible:
         - 4.0.2
         - 4.0.3
