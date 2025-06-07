@@ -5,26 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< HEAD
-      ticks: 638747722336894349
-    m_Hash: 2832952078
-=======
-      ticks: 638846201784093488
+      ticks: 638846880512732270
     m_Hash: 2910946179
->>>>>>> b43f50d184a132b3792fd94395c9adc56a8f5e03
   m_LockFileStatus:
     m_FilePath: C:/Users/Lenovo/Wise Clicks/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< HEAD
-      ticks: 638747722637351134
-    m_Hash: 3827148378
-=======
-      ticks: 638846201784103464
+      ticks: 638846880512732270
     m_Hash: 3703255063
->>>>>>> b43f50d184a132b3792fd94395c9adc56a8f5e03
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -184,8 +174,6 @@ m_PackageAssets:
         - 10.1.3
         - 10.1.4
         - 10.2.0
-        - 11.0.0
-        - 12.0.0
         compatible:
         - 5.0.4
         - 5.0.5
@@ -432,8 +420,6 @@ m_PackageAssets:
         - 9.0.3
         - 10.0.0
         - 10.1.0
-        - 10.1.1
-        - 11.0.0
         compatible:
         - 4.0.2
         verified: 4.0.2
@@ -656,8 +642,6 @@ m_PackageAssets:
         - 10.0.6
         - 10.0.7
         - 10.1.0
-        - 11.0.0
-        - 12.0.0
         compatible:
         - 5.1.1
         - 5.1.2
@@ -1643,11 +1627,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 3.0.9
       source: 1
-<<<<<<< HEAD
-      resolvedPath: C:\Users\Lenovo\Wise Clicks\Library\PackageCache\com.unity.textmeshpro@3.0.4
-=======
-      resolvedPath: C:\Users\qingw\OneDrive\Desktop\Wise-Clicks (WSS)\Wise-Clicks\Library\PackageCache\com.unity.textmeshpro@3.0.9
->>>>>>> b43f50d184a132b3792fd94395c9adc56a8f5e03
+      resolvedPath: C:\Users\Lenovo\Wise Clicks\Library\PackageCache\com.unity.textmeshpro@3.0.9
       assetPath: Packages/com.unity.textmeshpro
       name: com.unity.textmeshpro
       displayName: TextMeshPro
@@ -4062,9 +4042,7 @@ m_PackageAssets:
         - 9.0.6
         - 9.0.7
         - 9.1.0
-        - 10.0.0
         - 11.0.0
-        - 11.0.1
         compatible:
         - 4.0.2
         - 4.0.3
