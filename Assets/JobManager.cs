@@ -151,11 +151,11 @@ public class JobManager : MonoBehaviour
         if (isCorrectDecision)
         {
             correctDecisions++;
-            GameManager.Instance.UpdateBalance(100); // Reward for correct decision
+            GameManager.Instance.UpdateBalance(50); // Reward for correct decision
         }
         else
         {
-            GameManager.Instance.UpdateBalance(-200); // Penalty for incorrect decision
+            GameManager.Instance.UpdateBalance(-100); // Penalty for incorrect decision
         }
 
         activeJobs.Remove(jobObject);
@@ -175,12 +175,11 @@ public class JobManager : MonoBehaviour
 
     void OnLevelComplete()
     {
-        // Calculate score based on correct decisions and balance
-        int score = correctDecisions * 100; // 100 points per correct decision
-        GameManager.Instance.SaveScore(score);
-        Debug.Log($"Level Complete! Score: {score}, Correct Decisions: {correctDecisions}/{totalJobsProcessed}");
+        // Save the current balance as the score
+        GameManager.Instance.SaveScore();
+        Debug.Log($"Level Complete! Score (Balance): {GameManager.Instance.GetAccountBalance()}, Correct Decisions: {correctDecisions}/{totalJobsProcessed}");
 
-        // Navigate to HomeScene or another scene after completion
+        // Navigate to HomeScene
         SceneManager.LoadScene("HomeScene");
     }
 

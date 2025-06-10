@@ -7,7 +7,7 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public TMP_Text balanceText; // Reference to BalanceText UI
+    public TMP_Text balanceText; // Reference to BalanceText UI (optional)
     private int accountBalance = 1000;
     private string playerName = "Player"; // Default name
 
@@ -53,10 +53,7 @@ public class GameManager : MonoBehaviour
         {
             balanceText = balanceTextObj.GetComponent<TMP_Text>();
         }
-        else
-        {
-            Debug.LogWarning("No BalanceText found in scene: " + SceneManager.GetActiveScene().name);
-        }
+        // No warning here, as BalanceText is optional
     }
 
     public void SetPlayerName(string name)
@@ -83,27 +80,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public int GetAccountBalance()
+    {
+        return accountBalance;
+    }
+
     void UpdateBalanceUI()
     {
-        if (balanceText == null)
-        {
-            AssignBalanceText();
-        }
-
         if (balanceText != null)
         {
             balanceText.text = accountBalance.ToString();
         }
-        else
-        {
-            Debug.LogWarning("Cannot update balance UI: balanceText is still null.");
-        }
+        // Removed warning for null balanceText to avoid clutter
     }
 
-    public void SaveScore(int score)
+    public void SaveScore()
     {
         List<LeaderboardEntry> leaderboard = LoadLeaderboard();
-        leaderboard.Add(new LeaderboardEntry { name = playerName, score = score });
+        leaderboard.Add(new LeaderboardEntry { name = playerName, score = accountBalance });
         leaderboard.Sort((a, b) => b.score.CompareTo(a.score)); // Sort descending
         if (leaderboard.Count > maxLeaderboardEntries)
         {
@@ -118,7 +112,7 @@ public class GameManager : MonoBehaviour
         }
         PlayerPrefs.SetInt($"{leaderboardKey}_count", leaderboard.Count);
         PlayerPrefs.Save();
-        Debug.Log($"Score saved for {playerName} with score {score}");
+        Debug.Log($"Score saved for {playerName} with score {accountBalance}");
     }
 
     public List<LeaderboardEntry> LoadLeaderboard()

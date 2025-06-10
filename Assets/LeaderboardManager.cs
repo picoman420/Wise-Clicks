@@ -33,37 +33,38 @@ public class LeaderboardManager : MonoBehaviour
         List<LeaderboardEntry> leaderboard = GameManager.Instance.LoadLeaderboard();
         string currentPlayer = GameManager.Instance.GetPlayerName();
 
+        // Debug the loaded leaderboard
+        Debug.Log($"Loaded leaderboard for {currentPlayer}:");
+        foreach (var entry in leaderboard)
+        {
+            Debug.Log($"Name: {entry.name}, Score: {entry.score}");
+        }
+
         // Populate top 3
         if (leaderboard.Count > 0)
         {
             firstPlace.text = leaderboard[0].name;
-            // Get the child to set the points
             GameObject firstPlacePoints = firstPlace.transform.GetChild(0).gameObject;
             firstPlacePoints.GetComponent<TextMeshProUGUI>().text = leaderboard[0].score.ToString();
-
             UpdateTextMaterial(firstPlace, leaderboard[0].name == currentPlayer);
         }
         if (leaderboard.Count > 1)
         {
             secondPlace.text = leaderboard[1].name;
-            // Get the child to set the points
             GameObject secondPlacePoints = secondPlace.transform.GetChild(0).gameObject;
             secondPlacePoints.GetComponent<TextMeshProUGUI>().text = leaderboard[1].score.ToString();
-
             UpdateTextMaterial(secondPlace, leaderboard[1].name == currentPlayer);
         }
         if (leaderboard.Count > 2)
         {
             thirdPlace.text = leaderboard[2].name;
-            // Get the child to set the points
             GameObject thirdPlacePoints = thirdPlace.transform.GetChild(0).gameObject;
             thirdPlacePoints.GetComponent<TextMeshProUGUI>().text = leaderboard[2].score.ToString();
-
             UpdateTextMaterial(thirdPlace, leaderboard[2].name == currentPlayer);
         }
 
         // Populate remaining entries
-        for (int i = 3; i < leaderboard.Count && i < 8; i++) // Top 5 to match maxLeaderboardEntries
+        for (int i = 3; i < leaderboard.Count && i < 10; i++) // Updated to maxLeaderboardEntries (10)
         {
             entry = Instantiate(prefabPanel, parentPanel);
 
@@ -71,13 +72,12 @@ public class LeaderboardManager : MonoBehaviour
             {
                 if (child.CompareTag("Rank"))
                 {
-                    child.gameObject.GetComponent<TextMeshProUGUI>().text = (i+1).ToString();
+                    child.gameObject.GetComponent<TextMeshProUGUI>().text = (i + 1).ToString();
                 }
                 
                 if (child.CompareTag("Name"))
                 {
                     TextMeshProUGUI nameText = child.gameObject.GetComponent<TextMeshProUGUI>();
-                    
                     nameText.text = leaderboard[i].name;
                     UpdateTextMaterial(nameText, leaderboard[i].name == currentPlayer);
                 }
