@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/LevelScene.unity
-=======
-- path: Assets/Scenes/SettingsScene.unity
->>>>>>> main
+- path: Assets/Scenes/MessageScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
