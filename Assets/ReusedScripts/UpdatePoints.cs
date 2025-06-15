@@ -9,12 +9,12 @@ public class UpdatePoints : MonoBehaviour
         if (isCorrect) // True --> Correct Answer
         {
             GameManager.Instance.UpdateBalance(50);
-            Debug.Log("User chose correct answer");
+            //Debug.Log("User chose correct answer");
         }
         else  // False --> Wrong Answer
         {
             GameManager.Instance.UpdateBalance(-100);
-            Debug.Log("User chose wrong answer");
+            //Debug.Log("User chose wrong answer");
         }
     }
 }

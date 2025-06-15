@@ -2,17 +2,20 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 
+// Managing message scene
 public class MessageManager : MonoBehaviour
 {
-    public GameObject currentManager;
+    public GameObject currentManager; // attached gameobject containing the script
 
     public TextMeshProUGUI hintText;
     public TextMeshProUGUI correctText;
     public TextMeshProUGUI wrongText;
 
-    private ButtonsManager buttonsManager;
-    private UpdatePoints updatePoints;
+    private ButtonsManager buttonsManager; // reference instance of the script
+    private UpdatePoints updatePoints; // reference instance of the script
 
+    // Data texts for output
+    // for hint section
     private string[] hints = {
         "Qns 1",
         "Qns 2",
@@ -28,6 +31,7 @@ public class MessageManager : MonoBehaviour
         "Qns 12",
     };
 
+    // for correct section
     private string[] corrects = {
         "Correct! This is a SCAM.",
         "Correct! This is a REAL message.",
@@ -43,6 +47,7 @@ public class MessageManager : MonoBehaviour
         "Correct! This is a SCAM.",
     };
 
+    // for wrong section
     private string[] wrongs = {
         "Incorrect! This is a SCAM.",
         "Incorrect! This is a REAL message by MOH.",

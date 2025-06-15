@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 7232617745710416324}
   m_Layer: 0
   m_Name: Main Btns
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1128,7 +1128,7 @@ GameObject:
   - component: {fileID: 7232617746912260114}
   m_Layer: 0
   m_Name: Info
-  m_TagString: Untagged
+  m_TagString: Content
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
