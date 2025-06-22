@@ -4,7 +4,10 @@ using TMPro;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
-// *** -!A Reused Manager script for ALL Templates!- ***
+// ------------------------------------------------------
+// *** -- A REUSED Manager script for ALL Templates! -- ***
+// ------------------------------------------------------
+
 public class ButtonsManager : MonoBehaviour
 {
     // Managing prefabs 
@@ -131,12 +134,15 @@ public class ButtonsManager : MonoBehaviour
         completionMenu.SetActive(true);
 
         // -- To placed in respective code section -- //
+        // -- Need a check to identify which level -- //
+
         fullStars.SetActive(true);
         //halfStars.SetActive(true);
         //oneStar.SetActive(true);
         //noStar.SetActive(true);
 
         // -- To update score accordingly -- //
+
         score.text = "SCORE: " + "00000";
     }
 
