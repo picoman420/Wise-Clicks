@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         UpdateBalanceUI();
         if (accountBalance <= 0)
         {
-            Debug.Log("Game Over! Balance reached zero.");
+            Debug.Log("Game Over! Balance reached zero."); // game continues but player gets 0 stars
         }
     }
 

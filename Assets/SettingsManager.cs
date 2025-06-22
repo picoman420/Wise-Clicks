@@ -41,7 +41,7 @@ public class SettingsManager : MonoBehaviour
         TMP_InputField inputField = nameInputPanel.AddComponent<TMP_InputField>();
         inputField.textComponent = nameInputPanel.AddComponent<TextMeshProUGUI>();
         inputField.placeholder = nameInputPanel.AddComponent<TextMeshProUGUI>();
-        inputField.placeholder.text = "Enter new name";
+        //inputField.placeholder.text = "Enter new name";
         inputField.contentType = TMP_InputField.ContentType.Name;
 
         // Create Confirm Button with TextMeshProUGUI
