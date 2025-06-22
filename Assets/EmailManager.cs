@@ -60,27 +60,44 @@ public class EmailManager : MonoBehaviour
     {
         buttonsManager = currentManager.GetComponent<ButtonsManager>();
         updatePoints = currentManager.GetComponent<UpdatePoints>();
+        if (buttonsManager == null || updatePoints == null)
+        {
+            Debug.LogError("ButtonsManager or UpdatePoints component not found on " + currentManager.name);
+        }
     }
 
     public void OnHintClicked()
     {
-        buttonsManager.hintBar.SetActive(true);
-        hintText.text = hints[buttonsManager.currentIndex];
+        if (buttonsManager != null && hintText != null)
+        {
+            buttonsManager.hintBar.SetActive(true);
+            hintText.text = hints[buttonsManager.currentIndex];
+        }
     }
 
     public void CorrectAnsClicked()
     {
-        buttonsManager.correctBar.SetActive(true);
-        correctText.text = corrects[buttonsManager.currentIndex];
-
-        updatePoints.OnLegitOrScamClicked(true);
+        if (buttonsManager != null && correctText != null)
+        {
+            buttonsManager.correctBar.SetActive(true);
+            correctText.text = corrects[buttonsManager.currentIndex];
+            if (updatePoints != null)
+            {
+                updatePoints.OnLegitOrScamClicked(true);
+            }
+        }
     }
 
     public void WrongAnsClicked()
     {
-        buttonsManager.wrongBar.SetActive(true);
-        wrongText.text = wrongs[buttonsManager.currentIndex];
-
-        updatePoints.OnLegitOrScamClicked(false);
+        if (buttonsManager != null && wrongText != null)
+        {
+            buttonsManager.wrongBar.SetActive(true);
+            wrongText.text = wrongs[buttonsManager.currentIndex];
+            if (updatePoints != null)
+            {
+                updatePoints.OnLegitOrScamClicked(false);
+            }
+        }
     }
 }

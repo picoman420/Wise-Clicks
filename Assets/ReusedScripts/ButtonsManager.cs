@@ -48,7 +48,8 @@ public class ButtonsManager : MonoBehaviour
 
     void Update()
     {
-        // check if all buttons are pressed, if yes, level completed
+        // Check if all buttons are pressed and tasks completed
+        Debug.Log($"Counter: {counter}, ButtonPrefabs Length: {buttonPrefabs.Length}");
         if (counter == buttonPrefabs.Length)
         {
             CompletionGame();
@@ -59,11 +60,16 @@ public class ButtonsManager : MonoBehaviour
     {
         GameObject currentBtn = EventSystem.current.currentSelectedGameObject; // Identify button clicked
 
-        if (activePrefabs.Contains(currentBtn))
+        if (currentBtn != null && activePrefabs.Contains(currentBtn))
         {
             currentIndex = activePrefabs.IndexOf(currentBtn);
-            //activePrefabs.Remove(currentBtn); // Removing from instances list
+            activePrefabs.Remove(currentBtn); // Remove to avoid duplicates
             Destroy(currentBtn);  // Destroy in game
+            Debug.Log($"Destroyed main button at index {currentIndex}, Counter: {counter}");
+        }
+        else
+        {
+            Debug.LogWarning("Current selected button is null or not in active list!");
         }
     }
 
@@ -79,17 +85,16 @@ public class ButtonsManager : MonoBehaviour
 
     public void ProceedNextTaskReset(bool shouldCount)
     {
-        // (to check if qns are all completed)
-        if (shouldCount == false)
+        // Handle UI resets and increment counter on task completion
+        if (shouldCount)
         {
-            // counter should not increment because restart/start happened
-            // Set counter back to original
-            counter = 0;
+            counter++; // Increment only when OK is clicked after task completion
+            Debug.Log($"Task completed, Counter incremented to: {counter}");
         }
         else
         {
-            // counter should increment because qns completed
-            counter += 1;
+            // Reset for restart/start
+            counter = 0;
         }
 
         // Set Active False to bars
@@ -101,6 +106,13 @@ public class ButtonsManager : MonoBehaviour
     // Restart Functionality
     public void Restart()
     {
+        // Reset balance to 1000
+        if (GameManager.Instance != null)
+        {
+            int currentBalance = GameManager.Instance.GetAccountBalance();
+            GameManager.Instance.UpdateBalance(1000 - currentBalance);
+        }
+
         // Destroy any remaining messages
         foreach (GameObject currentPrefab in activePrefabs)
         {
@@ -133,17 +145,54 @@ public class ButtonsManager : MonoBehaviour
     {
         completionMenu.SetActive(true);
 
-        // -- To placed in respective code section -- //
-        // -- Need a check to identify which level -- //
+        // Save the score before displaying
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.SaveScore();
+        }
 
-        fullStars.SetActive(true);
-        //halfStars.SetActive(true);
-        //oneStar.SetActive(true);
-        //noStar.SetActive(true);
+        // Get current balance as score
+        int currentScore = GameManager.Instance != null ? GameManager.Instance.GetAccountBalance() : 1000;
 
-        // -- To update score accordingly -- //
+        // Update score text
+        if (score != null)
+        {
+            score.text = "SCORE: " + currentScore.ToString();
+        }
+        else
+        {
+            Debug.LogWarning("score TextMeshProUGUI is not assigned!");
+        }
 
-        score.text = "SCORE: " + "00000";
+        // Calculate and display stars based on score
+        CalculateStars(currentScore);
+    }
+
+    private void CalculateStars(int score)
+    {
+        // Reset all star displays
+        fullStars.SetActive(false);
+        halfStars.SetActive(false);
+        oneStar.SetActive(false);
+        noStar.SetActive(false);
+
+        // Determine star rating based on score (3-star system)
+        if (score >= 1300) // 3 stars (87% of max 1500)
+        {
+            fullStars.SetActive(true); // 3 stars
+        }
+        else if (score >= 1000) // 2 stars (67% of max)
+        {
+            halfStars.SetActive(true); // 2 stars
+        }
+        else if (score >= 500) // 1 star (33% of max)
+        {
+            oneStar.SetActive(true); // 1 star
+        }
+        else // 0 stars (<33% of max)
+        {
+            noStar.SetActive(true); // 0 stars
+        }
     }
 
     public void ExitToHome()
