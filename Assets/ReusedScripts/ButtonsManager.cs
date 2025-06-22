@@ -63,7 +63,6 @@ public class ButtonsManager : MonoBehaviour
         if (currentBtn != null && activePrefabs.Contains(currentBtn))
         {
             currentIndex = activePrefabs.IndexOf(currentBtn);
-            activePrefabs.Remove(currentBtn); // Remove to avoid duplicates
             Destroy(currentBtn);  // Destroy in game
             Debug.Log($"Destroyed main button at index {currentIndex}, Counter: {counter}");
         }

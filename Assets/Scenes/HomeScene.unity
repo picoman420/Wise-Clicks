@@ -719,14 +719,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lead Programmer: Singh Manuj
+  m_text: 'Lead Programmers: Singh Manuj, Wong Qing Wei
 
-    UI & UX Designer: Wong Qing Wei
+    UI & UX Designer: Wong
+    Qing Wei
 
-    Project
-    Coordinator: Tan Pheng Khai
+    Project Coordinator: Tan Pheng Khai
 
-    Supervisor: Edson C. Tandoc Jr.'
+    Supervisor: Edson C. Tandoc
+    Jr.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ff1f6485925d424aab714afaf8e5b84, type: 2}
   m_sharedMaterial: {fileID: -5011594828576793503, guid: 4ff1f6485925d424aab714afaf8e5b84, type: 2}
@@ -765,7 +766,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 10
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1176,7 +1177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 269}
+  m_AnchoredPosition: {x: 0, y: 270}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1160720515
@@ -1480,7 +1481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 79}
+  m_AnchoredPosition: {x: 0, y: 85}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1522484813
@@ -1530,8 +1531,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
