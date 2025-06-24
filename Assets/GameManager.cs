@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.DeleteAll(); // Clear PlayerPrefs for testing
         UpdateBalanceUI();
         SceneManager.sceneLoaded += OnSceneLoaded;
         Debug.Log($"GameManager initialized with playerName: {playerName}");
@@ -96,8 +97,28 @@ public class GameManager : MonoBehaviour
     public void SaveScore()
     {
         List<LeaderboardEntry> leaderboard = LoadLeaderboard();
-        leaderboard.Add(new LeaderboardEntry { name = playerName, score = accountBalance });
-        leaderboard.Sort((a, b) => b.score.CompareTo(a.score)); // Sort descending
+        string currentPlayer = playerName;
+        int currentScore = accountBalance;
+
+        // Check if the player already has an entry
+        LeaderboardEntry existingEntry = leaderboard.Find(entry => entry.name == currentPlayer);
+        if (existingEntry.name != null)
+        {
+            // Update existing entry if new score is higher
+            if (currentScore > existingEntry.score)
+            {
+                leaderboard.Remove(existingEntry);
+                leaderboard.Add(new LeaderboardEntry { name = currentPlayer, score = currentScore });
+            }
+        }
+        else
+        {
+            // Add new entry if player not found
+            leaderboard.Add(new LeaderboardEntry { name = currentPlayer, score = currentScore });
+        }
+
+        // Sort descending and trim to max entries
+        leaderboard.Sort((a, b) => b.score.CompareTo(a.score));
         if (leaderboard.Count > maxLeaderboardEntries)
         {
             leaderboard.RemoveAt(leaderboard.Count - 1); // Keep top 10
@@ -111,7 +132,7 @@ public class GameManager : MonoBehaviour
         }
         PlayerPrefs.SetInt($"{leaderboardKey}_count", leaderboard.Count);
         PlayerPrefs.Save();
-        Debug.Log($"Score saved for {playerName} with score {accountBalance}");
+        Debug.Log($"Score saved for {currentPlayer} with score {currentScore}");
     }
 
     public List<LeaderboardEntry> LoadLeaderboard()
