@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteAll(); // Clear PlayerPrefs for testing
+        //PlayerPrefs.DeleteAll(); // Clear PlayerPrefs for testing
         UpdateBalanceUI();
         SceneManager.sceneLoaded += OnSceneLoaded;
         Debug.Log($"GameManager initialized with playerName: {playerName}");
