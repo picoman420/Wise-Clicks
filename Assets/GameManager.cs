@@ -127,12 +127,18 @@ public class GameManager : MonoBehaviour
         return leaderboard.OrderByDescending(entry => entry.score).ToList();
     }
 
-    // Method to set the last completed level
-    public void SetLastCompletedLevel(string levelScene)
+    // Method to save star rating for a level
+    public void SaveLevelStars(string levelScene, int stars)
     {
-        PlayerPrefs.SetString("LastCompletedLevel", levelScene);
+        PlayerPrefs.SetInt($"{levelScene}_Stars", stars);
         PlayerPrefs.Save();
-        Debug.Log($"Last completed level set to: {levelScene}");
+        Debug.Log($"Stars saved for {levelScene}: {stars}");
+    }
+
+    // Method to get star rating for a level
+    public int GetLevelStars(string levelScene)
+    {
+        return PlayerPrefs.GetInt($"{levelScene}_Stars", 0); // Default to 0 if not set
     }
 }
 

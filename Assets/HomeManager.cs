@@ -28,66 +28,48 @@ public class HomeManager : MonoBehaviour
         playButton.SetActive(false);
         selectLevelText.SetActive(true);
 
-        // Update stars for completed levels
-        UpdateLevelStars();
+        // Update stars for all completed levels
+        UpdateAllLevelStars();
     }
 
-    void UpdateLevelStars()
+    void UpdateAllLevelStars()
     {
-        int currentScore = GameManager.Instance != null ? GameManager.Instance.GetAccountBalance() : 1000;
-        string lastScene = PlayerPrefs.GetString("LastCompletedLevel", ""); // Track last completed level
+        // Check and update stars for each level
+        UpdateStarsForLevel("EmailScene", emailParent, emailStarsPos);
+        UpdateStarsForLevel("MessageScene", smsParent, smsStarsPos);
+        UpdateStarsForLevel("JobSearchScene", jobParent, jobStarsPos);
+        UpdateStarsForLevel("CallsScene", callParent, callStarsPos);
+    }
 
-        // Determine which level to update stars for based on last completed scene
-        if (!string.IsNullOrEmpty(lastScene))
+    void UpdateStarsForLevel(string levelScene, Transform starsParent, Transform starsPos)
+    {
+        if (starsParent != null && starsPos != null)
         {
-            Transform starsParent = null;
-            Transform starsPos = null;
-
-            switch (lastScene)
+            // Clear existing stars for this level
+            foreach (Transform child in starsParent)
             {
-                case "EmailScene":
-                    starsParent = emailParent;
-                    starsPos = emailStarsPos;
-                    break;
-                case "MessageScene":
-                    starsParent = smsParent;
-                    starsPos = smsStarsPos;
-                    break;
-                case "JobSearchScene":
-                    starsParent = jobParent;
-                    starsPos = jobStarsPos;
-                    break;
-                case "CallsScene":
-                    starsParent = callParent;
-                    starsPos = callStarsPos;
-                    break;
+                Destroy(child.gameObject);
             }
 
-            if (starsParent != null && starsPos != null)
-            {
-                // Clear existing stars for this level
-                foreach (Transform child in starsParent)
-                {
-                    Destroy(child.gameObject);
-                }
+            // Get saved star rating
+            int stars = GameManager.Instance != null ? GameManager.Instance.GetLevelStars(levelScene) : 0;
 
-                // Instantiate the appropriate star prefab based on score
-                if (currentScore >= 1300) // 3 stars
-                {
-                    InstantiateStars(fullStars, starsPos, starsParent);
-                }
-                else if (currentScore >= 1000) // 2 stars
-                {
-                    InstantiateStars(halfStars, starsPos, starsParent);
-                }
-                else if (currentScore >= 500) // 1 star
-                {
-                    InstantiateStars(oneStar, starsPos, starsParent);
-                }
-                else // 0 stars
-                {
-                    InstantiateStars(noStar, starsPos, starsParent);
-                }
+            // Instantiate the appropriate star prefab based on saved stars
+            if (stars == 3)
+            {
+                InstantiateStars(fullStars, starsPos, starsParent);
+            }
+            else if (stars == 2)
+            {
+                InstantiateStars(halfStars, starsPos, starsParent);
+            }
+            else if (stars == 1)
+            {
+                InstantiateStars(oneStar, starsPos, starsParent);
+            }
+            else
+            {
+                InstantiateStars(noStar, starsPos, starsParent);
             }
         }
     }
