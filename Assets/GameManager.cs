@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //PlayerPrefs.DeleteAll(); // Clear PlayerPrefs for testing
         UpdateBalanceUI();
         SceneManager.sceneLoaded += OnSceneLoaded;
         Debug.Log($"GameManager initialized with playerName: {playerName}");
@@ -97,28 +96,8 @@ public class GameManager : MonoBehaviour
     public void SaveScore()
     {
         List<LeaderboardEntry> leaderboard = LoadLeaderboard();
-        string currentPlayer = playerName;
-        int currentScore = accountBalance;
-
-        // Check if the player already has an entry
-        LeaderboardEntry existingEntry = leaderboard.Find(entry => entry.name == currentPlayer);
-        if (existingEntry.name != null)
-        {
-            // Update existing entry if new score is higher
-            if (currentScore > existingEntry.score)
-            {
-                leaderboard.Remove(existingEntry);
-                leaderboard.Add(new LeaderboardEntry { name = currentPlayer, score = currentScore });
-            }
-        }
-        else
-        {
-            // Add new entry if player not found
-            leaderboard.Add(new LeaderboardEntry { name = currentPlayer, score = currentScore });
-        }
-
-        // Sort descending and trim to max entries
-        leaderboard.Sort((a, b) => b.score.CompareTo(a.score));
+        leaderboard.Add(new LeaderboardEntry { name = playerName, score = accountBalance });
+        leaderboard.Sort((a, b) => b.score.CompareTo(a.score)); // Sort descending
         if (leaderboard.Count > maxLeaderboardEntries)
         {
             leaderboard.RemoveAt(leaderboard.Count - 1); // Keep top 10
@@ -132,7 +111,7 @@ public class GameManager : MonoBehaviour
         }
         PlayerPrefs.SetInt($"{leaderboardKey}_count", leaderboard.Count);
         PlayerPrefs.Save();
-        Debug.Log($"Score saved for {currentPlayer} with score {currentScore}");
+        Debug.Log($"Score saved for {playerName} with score {accountBalance}");
     }
 
     public List<LeaderboardEntry> LoadLeaderboard()
@@ -146,6 +125,14 @@ public class GameManager : MonoBehaviour
             leaderboard.Add(new LeaderboardEntry { name = name, score = score });
         }
         return leaderboard.OrderByDescending(entry => entry.score).ToList();
+    }
+
+    // Method to set the last completed level
+    public void SetLastCompletedLevel(string levelScene)
+    {
+        PlayerPrefs.SetString("LastCompletedLevel", levelScene);
+        PlayerPrefs.Save();
+        Debug.Log($"Last completed level set to: {levelScene}");
     }
 }
 

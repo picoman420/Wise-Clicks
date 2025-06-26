@@ -28,13 +28,68 @@ public class HomeManager : MonoBehaviour
         playButton.SetActive(false);
         selectLevelText.SetActive(true);
 
+        // Update stars for completed levels
+        UpdateLevelStars();
+    }
 
-        // Use same FORMAT to instantiate chosen Stars (below r examples)
+    void UpdateLevelStars()
+    {
+        int currentScore = GameManager.Instance != null ? GameManager.Instance.GetAccountBalance() : 1000;
+        string lastScene = PlayerPrefs.GetString("LastCompletedLevel", ""); // Track last completed level
 
-        //InstantiateStars(fullStars, callStarsPos, callParent);
-        //InstantiateStars(halfStars, jobStarsPos, jobParent);
-        //InstantiateStars(oneStar, smsStarsPos, smsParent);
-        //InstantiateStars(noStar, emailStarsPos, emailParent);
+        // Determine which level to update stars for based on last completed scene
+        if (!string.IsNullOrEmpty(lastScene))
+        {
+            Transform starsParent = null;
+            Transform starsPos = null;
+
+            switch (lastScene)
+            {
+                case "EmailScene":
+                    starsParent = emailParent;
+                    starsPos = emailStarsPos;
+                    break;
+                case "MessageScene":
+                    starsParent = smsParent;
+                    starsPos = smsStarsPos;
+                    break;
+                case "JobSearchScene":
+                    starsParent = jobParent;
+                    starsPos = jobStarsPos;
+                    break;
+                case "CallsScene":
+                    starsParent = callParent;
+                    starsPos = callStarsPos;
+                    break;
+            }
+
+            if (starsParent != null && starsPos != null)
+            {
+                // Clear existing stars for this level
+                foreach (Transform child in starsParent)
+                {
+                    Destroy(child.gameObject);
+                }
+
+                // Instantiate the appropriate star prefab based on score
+                if (currentScore >= 1300) // 3 stars
+                {
+                    InstantiateStars(fullStars, starsPos, starsParent);
+                }
+                else if (currentScore >= 1000) // 2 stars
+                {
+                    InstantiateStars(halfStars, starsPos, starsParent);
+                }
+                else if (currentScore >= 500) // 1 star
+                {
+                    InstantiateStars(oneStar, starsPos, starsParent);
+                }
+                else // 0 stars
+                {
+                    InstantiateStars(noStar, starsPos, starsParent);
+                }
+            }
+        }
     }
 
     void InstantiateStars(GameObject starsPrefab, Transform starsPos, Transform starsParent)

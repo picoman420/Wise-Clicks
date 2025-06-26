@@ -201,6 +201,10 @@ public class ButtonsManager : MonoBehaviour
 
     public void ExitToLevelMap()
     {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.SetLastCompletedLevel(SceneManager.GetActiveScene().name); // Set the last completed level
+        }
         SceneManager.LoadScene("LevelScene");
     }
 
