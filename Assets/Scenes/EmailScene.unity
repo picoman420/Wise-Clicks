@@ -543,6 +543,13 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EmailManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7232617746087358213, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_text
+      value: 'Official Sender Domain.
+
+        The email comes from <no-reply@grab.com>,
+        which is Grab''s legitimate domain.'
+      objectReference: {fileID: 0}
     - target: {fileID: 7232617746636745972, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Texture
       value: 
@@ -1220,6 +1227,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EmailManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7232617746087358213, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_text
+      value: 'Unsolicited Gain & Request for Sensitive ID.
+
+        This is a SCAM.
+        You''re promised an unexpected, massive sum of money ($1.55 Million USD)
+        from an "Aid Fund" you didn''t apply for.'
+      objectReference: {fileID: 0}
     - target: {fileID: 7232617746636745972, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Texture
       value: 
@@ -1243,6 +1258,10 @@ PrefabInstance:
     - target: {fileID: 7232617746636745974, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232617746912260117, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7232617747139335216, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Pivot.x
@@ -1512,6 +1531,13 @@ PrefabInstance:
     - target: {fileID: 7232617746038565308, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EmailManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232617746087358213, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_text
+      value: 'No Request for Personal Info.
+
+        Legitimate link that directs
+        to official DBS website (dbs.com).'
       objectReference: {fileID: 0}
     - target: {fileID: 7232617746636745972, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Texture
@@ -1846,6 +1872,12 @@ PrefabInstance:
     - target: {fileID: 7232617746038565308, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EmailManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232617746087358213, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_text
+      value: "Verification Code (OTP): \nIt gives you a one-time code, which is a
+        standard security measure for verifying identity. Scammers usually ask you
+        for codes."
       objectReference: {fileID: 0}
     - target: {fileID: 7232617746636745972, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Texture
@@ -2345,6 +2377,13 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EmailManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7232617746087358213, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_text
+      value: 'Typo in Domain Name.
+
+        This email is fake due to a typo in the
+        domain name ("YouTip" instead of "YouTrip") and ("...co" instead of "...com").'
+      objectReference: {fileID: 0}
     - target: {fileID: 7232617746636745972, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Texture
       value: 
@@ -2704,6 +2743,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EmailManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7232617746087358213, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_text
+      value: "Unrealistic Earnings. \nPromises extraordinarily high daily/monthly
+        income of simple and unskilled work, which is a classic scam hook."
+      objectReference: {fileID: 0}
     - target: {fileID: 7232617746636745972, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Texture
       value: 
@@ -2992,6 +3036,13 @@ PrefabInstance:
     - target: {fileID: 7232617746038565308, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EmailManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232617746087358213, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_text
+      value: 'Suspicious Link
+
+        The URL (shopeeofficial.sg/recruit-agency)
+        is highly likely a phishing link, designed to mimic an official Shopee site.'
       objectReference: {fileID: 0}
     - target: {fileID: 7232617746636745972, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Texture
@@ -3706,6 +3757,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EmailManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7232617746087358213, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_text
+      value: "Unrealistic Earnings. \nPromises extraordinarily high daily/monthly
+        income of simple and unskilled work, which is a classic scam hook."
+      objectReference: {fileID: 0}
     - target: {fileID: 7232617746636745972, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Texture
       value: 
@@ -3994,6 +4050,13 @@ PrefabInstance:
     - target: {fileID: 7232617746038565308, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EmailManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232617746087358213, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_text
+      value: 'No Context Email.
+
+        It provides no reason why you''re receiving
+        a PDF, making it highly suspicious and irrelevant.'
       objectReference: {fileID: 0}
     - target: {fileID: 7232617746636745972, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Texture
