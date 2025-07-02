@@ -7,15 +7,16 @@ public class SettingsManager : MonoBehaviour
 {
     public Button changeNameButton;
     public Slider audioSlider;
-    public TMP_InputField nameInputField; // Input field to display and edit the name
+    public TMP_Text currentUsername;
+    public TMP_InputField newUsername;  // Input field to display and edit the name
 
     void Start()
     {
         audioSlider.onValueChanged.AddListener(OnAudioValueChanged);
         // Populate the name input field with the current player name
-        if (nameInputField != null && GameManager.Instance != null)
+        if (currentUsername != null && GameManager.Instance != null)
         {
-            nameInputField.text = GameManager.Instance.GetPlayerName();
+            currentUsername.text = GameManager.Instance.GetPlayerName();
         }
         else
         {
@@ -23,18 +24,19 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    public void BackButtonClick()
+    public void ClearInput()
     {
-        SceneManager.LoadScene("HomeScene");
+        newUsername.text = "";
     }
 
     public void ChangeNameClick()
     {
-        if (nameInputField != null && GameManager.Instance != null)
+        if (newUsername != null && GameManager.Instance != null)
         {
-            string newName = nameInputField.text.Trim();
+            string newName = newUsername.text.Trim();
             if (!string.IsNullOrEmpty(newName))
             {
+                currentUsername.text = newName; 
                 GameManager.Instance.SetPlayerName(newName);
                 Debug.Log($"Player name updated to: {newName}");
             }
@@ -47,10 +49,18 @@ public class SettingsManager : MonoBehaviour
         {
             Debug.LogError("nameInputField or GameManager.Instance is null!");
         }
+
+        ClearInput();
     }
 
     public void OnAudioValueChanged(float value)
     {
         Debug.Log($"Audio volume set to: {value}");
     }
+
+    public void BackButtonClick()
+    {
+        SceneManager.LoadScene("HomeScene");
+    }
+
 }

@@ -16,16 +16,16 @@ public class EmailManager : MonoBehaviour
     // Data texts for output
     // for hint section
     private string[] hints = {
-        "Qns 1",
-        "Qns 2",
-        "Qns 3",
-        "Qns 4",
-        "Qns 5",
-        "Qns 6",
-        "Qns 7",
-        "Qns 8",
-        "Qns 9",
-        "Qns 10",
+        "If it sounds too good to be true, it probably is.",
+        "If it sounds too good to be true, it probably is.",
+        "Check if sender email is legitimate.",
+        "If it sounds too good to be true, it probably is.",
+        "Any sensitive personal information asked?",
+        "Check if sender email is legitimate.",
+        "Spelling or grammatical errors are a giveaway.",
+        "Any suspicious website links provided?",
+        "Check if sender email is legitimate.",
+        "Any sensitive personal information asked?",
     };
 
     // for correct section

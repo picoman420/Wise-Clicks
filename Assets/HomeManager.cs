@@ -27,7 +27,10 @@ public class HomeManager : MonoBehaviour
     {
         playButton.SetActive(false);
         selectLevelText.SetActive(true);
+    }
 
+    void Update()
+    {
         // Update stars for all completed levels
         UpdateAllLevelStars();
     }

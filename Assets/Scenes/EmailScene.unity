@@ -847,6 +847,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EmailManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7232617746087358213, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_text
+      value: 'No Direct Sensitive Info Request.
+
+        It only asks you to click
+        a link to verify, not to provide passwords or other sensitive data directly
+        in the email.'
+      objectReference: {fileID: 0}
     - target: {fileID: 7232617746636745972, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Texture
       value: 
@@ -2745,8 +2753,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7232617746087358213, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_text
-      value: "Unrealistic Earnings. \nPromises extraordinarily high daily/monthly
-        income of simple and unskilled work, which is a classic scam hook."
+      value: 'Fake Job Listings.
+
+        Promises extraordinarily high daily/monthly
+        income of simple and unskilled work, which is a classic scam hook.'
       objectReference: {fileID: 0}
     - target: {fileID: 7232617746636745972, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Texture

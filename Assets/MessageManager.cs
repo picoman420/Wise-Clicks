@@ -17,18 +17,18 @@ public class MessageManager : MonoBehaviour
     // Data texts for output
     // for hint section
     private string[] hints = {
-        "Qns 1",
-        "Qns 2",
-        "Qns 3",
-        "Qns 4",
-        "Qns 5",
-        "Qns 6",
-        "Qns 7",
-        "Qns 8",
-        "Qns 9",
-        "Qns 10",
-        "Qns 11",
-        "Qns 12",
+        "If it sounds too good to be true, it probably is.",
+        "Check if domain link is legitimate.",
+        "If it sounds too good to be true, it probably is.",
+        "Spelling or grammatical errors are a giveaway.",
+        "If it sounds too good to be true, it probably is.",
+        "Any action required from your end?",
+        "Be wary of suspicious or unusual website links.",
+        "Any suspicious website links provided?",
+        "If it sounds too good to be true, it probably is.",
+        "If it sounds too good to be true, it probably is.",
+        "Check if domain link is legitimate.",
+        "If it sounds too good to be true, it probably is.",
     };
 
     // for correct section
