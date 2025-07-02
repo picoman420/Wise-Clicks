@@ -2163,6 +2163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeNameButton: {fileID: 673983649}
   audioSlider: {fileID: 1951342839}
+  nameInputField: {fileID: 8090986204626472160}
 --- !u!4 &1917810687
 Transform:
   m_ObjectHideFlags: 0
