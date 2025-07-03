@@ -40,8 +40,8 @@ public class HomeManager : MonoBehaviour
         // Check and update stars for each level
         UpdateStarsForLevel("EmailScene", emailParent, emailStarsPos);
         UpdateStarsForLevel("MessageScene", smsParent, smsStarsPos);
-        UpdateStarsForLevel("JobSearchScene", jobParent, jobStarsPos);
-        UpdateStarsForLevel("CallsScene", callParent, callStarsPos);
+        UpdateStarsForLevel("CallScene", callParent, callStarsPos);
+        //UpdateStarsForLevel("JobSearchScene", jobParent, jobStarsPos);
     }
 
     void UpdateStarsForLevel(string levelScene, Transform starsParent, Transform starsPos)
@@ -108,11 +108,9 @@ public class HomeManager : MonoBehaviour
 
     public void GoToCalls()
     {
-        scene = "CallsScene"; // Placeholder for future scene
+        scene = "CallScene";
         playButton.SetActive(true);
         selectLevelText.SetActive(false);
-
-        Debug.Log("Calls scene not implemented yet!");
     }
 
     public void GoToHome()

@@ -49,7 +49,7 @@ public class ButtonsManager : MonoBehaviour
     void Update()
     {
         // Check if all buttons are pressed and tasks completed
-        Debug.Log($"Counter: {counter}, ButtonPrefabs Length: {buttonPrefabs.Length}");
+        // Debug.Log($"Counter: {counter}, ButtonPrefabs Length: {buttonPrefabs.Length}");
         if (counter == buttonPrefabs.Length)
         {
             CompletionGame();

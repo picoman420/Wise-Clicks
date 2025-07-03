@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MessageScene.unity
     guid: 8cca7e0afea68894f8c44b23ef65fd37
   - enabled: 1
-    path: Assets/Scenes/JobSearchScene.unity
+    path: Assets/Scenes/CallScene.unity
     guid: 85932fccd36b8414cb0f979001c642bf
   - enabled: 1
     path: Assets/Scenes/SettingsScene.unity
