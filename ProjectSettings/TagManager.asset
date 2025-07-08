@@ -9,6 +9,8 @@ TagManager:
   - Points
   - Button
   - Content
+  - Border
+  - Answer
   layers:
   - Default
   - TransparentFX

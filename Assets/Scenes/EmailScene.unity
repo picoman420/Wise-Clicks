@@ -2101,6 +2101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentManager: {fileID: 170244964}
+  parentPopup: {fileID: 832737173}
   hintText: {fileID: 1698570228}
   correctText: {fileID: 1698570227}
   wrongText: {fileID: 1698570226}
@@ -3796,6 +3797,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.13
       objectReference: {fileID: 0}
+    - target: {fileID: 7232617746912260114, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232617746912260114, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232617746912260114, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232617746912260114, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1000.5218
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232617746912260117, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7232617747139335216, guid: 848e5fd452a0b4647932879b2433d139, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5412,7 +5433,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.72}
+  m_AnchorMax: {x: 1, y: 0.73}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

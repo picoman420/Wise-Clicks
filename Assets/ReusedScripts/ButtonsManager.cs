@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 using System.Collections.Generic;
@@ -244,5 +245,44 @@ public class ButtonsManager : MonoBehaviour
         noStar.SetActive(show);
 
         completionMenu.SetActive(show);
+    }
+
+    // Color controller for border
+    public void ChangeColors(Transform parent, bool isCorrect)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.gameObject.tag == "Border")
+            {
+                if (isCorrect) // if correct
+                {
+                    child.gameObject.GetComponent<RawImage>().color = new Color(121f / 255, 180f / 255, 38f / 255);
+                }
+                else // if wrong
+                {
+                    child.gameObject.GetComponent<RawImage>().color = new Color(193f / 255, 18f / 255, 31f / 255);
+                }
+                break;
+            }
+
+            // Recursive loop to find all objects with tag
+            ChangeColors(child, isCorrect);
+        }
+    }
+
+    // Text Controller
+    public void ChangeText(Transform parent, string textToChange)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.gameObject.tag == "Answer")
+            {
+                child.gameObject.GetComponent<TMP_Text>().text = textToChange;
+                break;
+            }
+
+            // Recursive loop to find all objects with tag
+            ChangeText(child, textToChange);
+        }
     }
 }

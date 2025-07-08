@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class CallManager : MonoBehaviour
 {
     public GameObject currentManager; // attached gameobject containing the script
+    public Transform parentPopup; // to change border color of info section
 
     public TextMeshProUGUI correctText;
     public TextMeshProUGUI wrongText;
@@ -38,10 +39,17 @@ public class CallManager : MonoBehaviour
         {
             buttonsManager.correctBar.SetActive(true);
             correctText.text = corrects[buttonsManager.currentIndex];
+
             if (updatePoints != null)
             {
                 updatePoints.OnLegitOrScamClicked(true);
             }
+
+            // text change
+            buttonsManager.ChangeText(parentPopup, corrects[buttonsManager.currentIndex]);
+
+            // color change
+            buttonsManager.ChangeColors(parentPopup, true);
         }
     }
 
@@ -51,10 +59,17 @@ public class CallManager : MonoBehaviour
         {
             buttonsManager.wrongBar.SetActive(true);
             wrongText.text = wrongs[buttonsManager.currentIndex];
+
             if (updatePoints != null)
             {
                 updatePoints.OnLegitOrScamClicked(false);
             }
+
+            // text change
+            buttonsManager.ChangeText(parentPopup, wrongs[buttonsManager.currentIndex]);
+
+            // color change
+            buttonsManager.ChangeColors(parentPopup, false);
         }
     }
 }

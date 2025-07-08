@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
 public class EmailManager : MonoBehaviour
 {
     public GameObject currentManager; // attached gameobject containing the script
+    public Transform parentPopup; // to change border color of info section
 
     public TextMeshProUGUI hintText;
     public TextMeshProUGUI correctText;
@@ -81,11 +83,18 @@ public class EmailManager : MonoBehaviour
         {
             buttonsManager.correctBar.SetActive(true);
             correctText.text = corrects[buttonsManager.currentIndex];
+
+            // text change
+            buttonsManager.ChangeText(parentPopup, corrects[buttonsManager.currentIndex]);
+
             if (updatePoints != null)
             {
                 updatePoints.OnLegitOrScamClicked(true);
             }
         }
+
+        // color change
+        buttonsManager.ChangeColors(parentPopup, true);
     }
 
     public void WrongAnsClicked()
@@ -94,10 +103,17 @@ public class EmailManager : MonoBehaviour
         {
             buttonsManager.wrongBar.SetActive(true);
             wrongText.text = wrongs[buttonsManager.currentIndex];
+
+            // text change
+            buttonsManager.ChangeText(parentPopup, wrongs[buttonsManager.currentIndex]);
+
             if (updatePoints != null)
             {
                 updatePoints.OnLegitOrScamClicked(false);
             }
         }
+
+        // color change
+        buttonsManager.ChangeColors(parentPopup, false);
     }
 }

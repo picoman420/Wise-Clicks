@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 public class MessageManager : MonoBehaviour
 {
     public GameObject currentManager; // attached gameobject containing the script
+    public Transform parentPopup; // to change border color of info section
 
     public TextMeshProUGUI hintText;
     public TextMeshProUGUI correctText;
@@ -81,6 +83,12 @@ public class MessageManager : MonoBehaviour
         correctText.text = corrects[buttonsManager.currentIndex];
 
         updatePoints.OnLegitOrScamClicked(true);
+
+        // text change
+        buttonsManager.ChangeText(parentPopup, corrects[buttonsManager.currentIndex]);
+
+        // color change
+        buttonsManager.ChangeColors(parentPopup, true);
     }
 
     public void WrongAnsClicked()
@@ -89,5 +97,11 @@ public class MessageManager : MonoBehaviour
         wrongText.text = wrongs[buttonsManager.currentIndex];
 
         updatePoints.OnLegitOrScamClicked(false);
+
+        // text change
+        buttonsManager.ChangeText(parentPopup, wrongs[buttonsManager.currentIndex]);
+
+        // color change
+        buttonsManager.ChangeColors(parentPopup, false);
     }
 }
