@@ -29,6 +29,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        // Reset stars and leaderboard data in Unity Editor, but not in builds
+#if UNITY_EDITOR
+        PlayerPrefs.DeleteKey($"{leaderboardKey}_count");
+        PlayerPrefs.DeleteKey("EmailScene_Stars");
+        PlayerPrefs.DeleteKey("MessageScene_Stars");
+        PlayerPrefs.DeleteKey("JobSearchScene_Stars");
+        PlayerPrefs.DeleteKey("CallsScene_Stars");
+#endif
         UpdateBalanceUI();
         SceneManager.sceneLoaded += OnSceneLoaded;
         Debug.Log($"GameManager initialized with playerName: {playerName}");
@@ -96,6 +104,8 @@ public class GameManager : MonoBehaviour
     public void SaveScore()
     {
         List<LeaderboardEntry> leaderboard = LoadLeaderboard();
+        // Remove entries for other players, keep only current player's latest score
+        leaderboard.RemoveAll(entry => entry.name != playerName);
         leaderboard.Add(new LeaderboardEntry { name = playerName, score = accountBalance });
         leaderboard.Sort((a, b) => b.score.CompareTo(a.score)); // Sort descending
         if (leaderboard.Count > maxLeaderboardEntries)

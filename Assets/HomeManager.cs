@@ -23,15 +23,18 @@ public class HomeManager : MonoBehaviour
     public GameObject oneStar;
     public GameObject noStar;
 
+    private GameObject selectedHighlight; // To track the highlight UI element
+
     void Start()
     {
         playButton.SetActive(false);
         selectLevelText.SetActive(true);
+        selectedHighlight = null; // Initialize highlight
     }
 
     void Update()
     {
-        // Update stars for all completed levels
+        // Update stars for all completed levels only if changed
         UpdateAllLevelStars();
     }
 
@@ -40,8 +43,8 @@ public class HomeManager : MonoBehaviour
         // Check and update stars for each level
         UpdateStarsForLevel("EmailScene", emailParent, emailStarsPos);
         UpdateStarsForLevel("MessageScene", smsParent, smsStarsPos);
-        UpdateStarsForLevel("CallScene", callParent, callStarsPos);
-        //UpdateStarsForLevel("JobSearchScene", jobParent, jobStarsPos);
+        UpdateStarsForLevel("JobSearchScene", jobParent, jobStarsPos);
+        UpdateStarsForLevel("CallsScene", callParent, callStarsPos);
     }
 
     void UpdateStarsForLevel(string levelScene, Transform starsParent, Transform starsPos)
@@ -51,7 +54,10 @@ public class HomeManager : MonoBehaviour
             // Clear existing stars for this level
             foreach (Transform child in starsParent)
             {
-                Destroy(child.gameObject);
+                if (child.gameObject != selectedHighlight) // Preserve highlight if it exists
+                {
+                    Destroy(child.gameObject);
+                }
             }
 
             // Get saved star rating
@@ -90,6 +96,7 @@ public class HomeManager : MonoBehaviour
         scene = "JobSearchScene";
         playButton.SetActive(true);
         selectLevelText.SetActive(false);
+        UpdateSelectionHighlight(jobParent);
     }
 
     public void GoToMessages()
@@ -97,6 +104,7 @@ public class HomeManager : MonoBehaviour
         scene = "MessageScene";
         playButton.SetActive(true);
         selectLevelText.SetActive(false);
+        UpdateSelectionHighlight(smsParent);
     }
 
     public void GoToEmail()
@@ -104,13 +112,17 @@ public class HomeManager : MonoBehaviour
         scene = "EmailScene";
         playButton.SetActive(true);
         selectLevelText.SetActive(false);
+        UpdateSelectionHighlight(emailParent);
     }
 
     public void GoToCalls()
     {
-        scene = "CallScene";
+        scene = "CallsScene"; // Placeholder for future scene
         playButton.SetActive(true);
         selectLevelText.SetActive(false);
+        UpdateSelectionHighlight(callParent);
+
+        Debug.Log("Calls scene not implemented yet!");
     }
 
     public void GoToHome()
@@ -127,6 +139,27 @@ public class HomeManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(scene);
+        }
+    }
+
+    private void UpdateSelectionHighlight(Transform levelParent)
+    {
+        // Clear previous highlight if it exists
+        if (selectedHighlight != null)
+        {
+            Destroy(selectedHighlight);
+        }
+
+        // Instantiate or activate a highlight UI element (e.g., a border or image)
+        GameObject highlightPrefab = Resources.Load<GameObject>("Assets/UI_Elements/Game Map/LevelSelection.png"); // Adjust path as needed
+        if (highlightPrefab != null)
+        {
+            selectedHighlight = Instantiate(highlightPrefab, levelParent);
+            ((RectTransform)selectedHighlight.transform).anchoredPosition = Vector2.zero; // Center on level icon
+        }
+        else
+        {
+            Debug.LogWarning("LevelHighlight prefab not found in Resources/UI/");
         }
     }
 }
