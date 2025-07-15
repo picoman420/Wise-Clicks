@@ -52,7 +52,7 @@ public class MessageManager : MonoBehaviour
     // for wrong section
     private string[] wrongs = {
         "Incorrect! This is a SCAM.",
-        "Incorrect! This is a REAL message by MOH.",
+        "Incorrect! This is a REAL message.",
         "Incorrect! This is a SCAM.",
         "Incorrect! This is a SCAM.",
         "Incorrect! This is a SCAM.",

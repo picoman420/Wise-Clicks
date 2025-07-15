@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class HomeManager : MonoBehaviour
 {
@@ -9,12 +11,13 @@ public class HomeManager : MonoBehaviour
 
     // Stars (points) system display in level map
     public Transform callParent;
-    public Transform jobParent;
+    public Transform webParent;
     public Transform smsParent;
     public Transform emailParent;
 
+    // Position reused for level selection + stars position
     public Transform callStarsPos;
-    public Transform jobStarsPos;
+    public Transform webStarsPos;
     public Transform smsStarsPos;
     public Transform emailStarsPos;
 
@@ -23,17 +26,14 @@ public class HomeManager : MonoBehaviour
     public GameObject oneStar;
     public GameObject noStar;
 
-    private GameObject selectedHighlight; // To track the highlight UI element
+    public GameObject levelSelection;
+    private List<GameObject> instancesSelectionList = new List<GameObject>();
 
     void Start()
     {
         playButton.SetActive(false);
         selectLevelText.SetActive(true);
-        selectedHighlight = null; // Initialize highlight
-    }
 
-    void Update()
-    {
         // Update stars for all completed levels only if changed
         UpdateAllLevelStars();
     }
@@ -43,7 +43,7 @@ public class HomeManager : MonoBehaviour
         // Check and update stars for each level
         UpdateStarsForLevel("EmailScene", emailParent, emailStarsPos);
         UpdateStarsForLevel("MessageScene", smsParent, smsStarsPos);
-        UpdateStarsForLevel("JobSearchScene", jobParent, jobStarsPos);
+        UpdateStarsForLevel("VideoScene", webParent, webStarsPos);
         UpdateStarsForLevel("CallsScene", callParent, callStarsPos);
     }
 
@@ -54,10 +54,7 @@ public class HomeManager : MonoBehaviour
             // Clear existing stars for this level
             foreach (Transform child in starsParent)
             {
-                if (child.gameObject != selectedHighlight) // Preserve highlight if it exists
-                {
-                    Destroy(child.gameObject);
-                }
+                Destroy(child.gameObject);
             }
 
             // Get saved star rating
@@ -66,37 +63,67 @@ public class HomeManager : MonoBehaviour
             // Instantiate the appropriate star prefab based on saved stars
             if (stars == 3)
             {
-                InstantiateStars(fullStars, starsPos, starsParent);
+                InstantiateSelectedUI(fullStars, starsPos, starsParent, false);
             }
             else if (stars == 2)
             {
-                InstantiateStars(halfStars, starsPos, starsParent);
+                InstantiateSelectedUI(halfStars, starsPos, starsParent, false);
             }
             else if (stars == 1)
             {
-                InstantiateStars(oneStar, starsPos, starsParent);
+                InstantiateSelectedUI(oneStar, starsPos, starsParent, false);
             }
             else
             {
-                InstantiateStars(noStar, starsPos, starsParent);
+                InstantiateSelectedUI(noStar, starsPos, starsParent, false);
             }
         }
     }
 
-    void InstantiateStars(GameObject starsPrefab, Transform starsPos, Transform starsParent)
+    // Reused Function for instantiated UI (eg. stars & level selection)
+    void InstantiateSelectedUI(GameObject instPrefab, Transform instPos, Transform instParent, bool forSelection)
     {
-        GameObject newStars = Instantiate(starsPrefab);
-        newStars.transform.SetParent(starsParent, false);
+        // Instantiation of UI
+        GameObject newInst = Instantiate(instPrefab);
+        newInst.name = instPrefab.name;
+        newInst.transform.SetParent(instParent, false);
 
-        ((RectTransform)newStars.transform).anchoredPosition = ((RectTransform)starsPos).anchoredPosition;
+        // Set anchored position of newly instantiated UI to the one passed in here
+        ((RectTransform)newInst.transform).anchoredPosition = ((RectTransform)instPos).anchoredPosition; 
+        
+        if (forSelection)  // for level selection
+        {
+            levelSelection = newInst; // create instance of the instantiated
+            levelSelection.GetComponent<RawImage>().enabled = true;
+            levelSelection.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -125); // Set anchored position because of reusing given position 
+            
+            instancesSelectionList.Add(levelSelection); // Add to list to track current number of instantiated UI selection
+        }
     }
 
-    public void GoToJobSearch()
+    // Clear all previous selection UI
+    void ClearPreviousSelection()
     {
-        scene = "JobSearchScene";
+        if (instancesSelectionList.Contains(levelSelection))
+        {
+            // Destroy all before instantiating a new one (to ensure only 1 appears in scene)
+            foreach (GameObject child in instancesSelectionList)
+            {
+                Destroy(child);
+            }
+            instancesSelectionList.Clear();
+        }
+    }
+
+    public void GoToWeb()
+    {
+        scene = "VideoScene";
         playButton.SetActive(true);
         selectLevelText.SetActive(false);
-        UpdateSelectionHighlight(jobParent);
+
+        // Instantiate level selection
+        ClearPreviousSelection();
+        InstantiateSelectedUI(levelSelection, webStarsPos, webParent, true);
     }
 
     public void GoToMessages()
@@ -104,7 +131,10 @@ public class HomeManager : MonoBehaviour
         scene = "MessageScene";
         playButton.SetActive(true);
         selectLevelText.SetActive(false);
-        UpdateSelectionHighlight(smsParent);
+
+        // Instantiate level selection
+        ClearPreviousSelection();
+        InstantiateSelectedUI(levelSelection, smsStarsPos, smsParent, true);
     }
 
     public void GoToEmail()
@@ -112,17 +142,21 @@ public class HomeManager : MonoBehaviour
         scene = "EmailScene";
         playButton.SetActive(true);
         selectLevelText.SetActive(false);
-        UpdateSelectionHighlight(emailParent);
+
+        // Instantiate level selection
+        ClearPreviousSelection();
+        InstantiateSelectedUI(levelSelection, emailStarsPos, emailParent, true);
     }
 
     public void GoToCalls()
     {
-        scene = "CallsScene"; // Placeholder for future scene
+        scene = "CallScene";
         playButton.SetActive(true);
         selectLevelText.SetActive(false);
-        UpdateSelectionHighlight(callParent);
 
-        Debug.Log("Calls scene not implemented yet!");
+        // Instantiate level selection
+        ClearPreviousSelection();
+        InstantiateSelectedUI(levelSelection, callStarsPos, callParent, true);
     }
 
     public void GoToHome()
@@ -139,27 +173,6 @@ public class HomeManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(scene);
-        }
-    }
-
-    private void UpdateSelectionHighlight(Transform levelParent)
-    {
-        // Clear previous highlight if it exists
-        if (selectedHighlight != null)
-        {
-            Destroy(selectedHighlight);
-        }
-
-        // Instantiate or activate a highlight UI element (e.g., a border or image)
-        GameObject highlightPrefab = Resources.Load<GameObject>("Assets/UI_Elements/Game Map/LevelSelection.png"); // Adjust path as needed
-        if (highlightPrefab != null)
-        {
-            selectedHighlight = Instantiate(highlightPrefab, levelParent);
-            ((RectTransform)selectedHighlight.transform).anchoredPosition = Vector2.zero; // Center on level icon
-        }
-        else
-        {
-            Debug.LogWarning("LevelHighlight prefab not found in Resources/UI/");
         }
     }
 }

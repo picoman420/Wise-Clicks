@@ -231,6 +231,11 @@ public class ButtonsManager : MonoBehaviour
                 child.gameObject.SetActive(false);
             }
 
+            if (child.gameObject.tag == "CallAudio")
+            {
+                child.gameObject.SetActive(true);
+            }
+
             // Recursive loop for find all objects with the tag to set visibility
             DescendantsDefaultState(child);
         }
