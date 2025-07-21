@@ -200,18 +200,38 @@ public class ButtonsManager : MonoBehaviour
         SceneManager.LoadScene("HomeScene");
     }
 
+    public void ExitBack()
+    {
+        SceneManager.LoadScene("LevelScene");
+    }
+
     public void ExitToLevelMap()
     {
         if (GameManager.Instance != null)
         {
             int currentScore = GameManager.Instance.GetAccountBalance();
             int stars = 0;
-            if (currentScore >= 1300) stars = 3;
-            else if (currentScore >= 1000) stars = 2;
-            else if (currentScore >= 500) stars = 1;
-            else stars = 0;
+
+            if (currentScore >= 1300)
+            {
+                stars = 3;
+            }
+            else if (currentScore >= 1000)
+            {
+                stars = 2;
+            }
+            else if (currentScore >= 500)
+            {
+                stars = 1;
+            }
+            else
+            {
+                stars = 0;
+            }
+
             GameManager.Instance.SaveLevelStars(SceneManager.GetActiveScene().name, stars); // Save stars for this level
         }
+
         SceneManager.LoadScene("LevelScene");
     }
 
