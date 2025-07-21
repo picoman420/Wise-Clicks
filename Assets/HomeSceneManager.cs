@@ -18,7 +18,7 @@ public class HomeSceneManager : MonoBehaviour
 
     public void LoadLevelScene()
     {
-        SceneManager.LoadScene("LevelScene");
+        SceneManager.LoadScene("CategoryScene");
     }
 
     public void LoadLeaderboardScene()
