@@ -45,7 +45,7 @@ public class MessageManager : MonoBehaviour
         "Correct! This is a REAL message.",
         "Correct! This is a SCAM.",
         "Correct! This is a SCAM.",
-        "Correct! This is a REAL message.",
+        "Correct! This is a SCAM.",
         "Correct! This is a SCAM.",
     };
 
@@ -61,7 +61,7 @@ public class MessageManager : MonoBehaviour
         "Incorrect! This is a REAL message.",
         "Incorrect! This is a SCAM.",
         "Incorrect! This is a SCAM.",
-        "Incorrect! This is a REAL message.",
+        "Incorrect! This is a SCAM.",
         "Incorrect! This is a SCAM.",
     };
 

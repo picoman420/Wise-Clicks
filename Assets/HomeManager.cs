@@ -44,7 +44,7 @@ public class HomeManager : MonoBehaviour
         UpdateStarsForLevel("EmailScene", emailParent, emailStarsPos);
         UpdateStarsForLevel("MessageScene", smsParent, smsStarsPos);
         UpdateStarsForLevel("VideoScene", webParent, webStarsPos);
-        UpdateStarsForLevel("CallsScene", callParent, callStarsPos);
+        UpdateStarsForLevel("CallScene", callParent, callStarsPos);
     }
 
     void UpdateStarsForLevel(string levelScene, Transform starsParent, Transform starsPos)
