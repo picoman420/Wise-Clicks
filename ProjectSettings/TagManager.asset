@@ -12,6 +12,7 @@ TagManager:
   - Border
   - Answer
   - CallAudio
+  - ChoiceAns
   layers:
   - Default
   - TransparentFX
