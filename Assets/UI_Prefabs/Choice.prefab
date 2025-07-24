@@ -32,7 +32,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: 0}
+  m_AnchoredPosition: {x: -83, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &2600013539820311002
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -400, y: -100, z: -400, w: -100}
+  m_margin: {x: -450, y: -100, z: -305, w: -100}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9d60c356665dec44a93c509aa4d3f924, type: 3}
+  m_Sprite: {fileID: 21300000, guid: deee221477a7bdb4f93db986c0955b6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -271,10 +271,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -320,6 +320,7 @@ MonoBehaviour:
   quizDataScript: {fileID: 7378051507437900572}
   positionUI: {fileID: 2600013538083408554}
   wrongUI: {fileID: 6265968605106913748, guid: 08ecfb2ddf4c5c24191294c479309b3f, type: 3}
+  correctUI: {fileID: 5411150701861162596, guid: 51b629159c0bc024ca748598cfc575f2, type: 3}
   clicked: 0
 --- !u!114 &7378051507437900572
 MonoBehaviour:
@@ -340,4 +341,3 @@ MonoBehaviour:
   - Which one is the REAL ScamShield website link?
   - When is the ScamShield Helpline available?
   randomNum: 0
-  currentRandNums: 

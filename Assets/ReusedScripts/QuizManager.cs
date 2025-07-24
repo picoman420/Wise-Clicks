@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using TMPro;
 
@@ -10,7 +11,10 @@ using TMPro;
 public class QuizManager : MonoBehaviour
 {
     // Private variables
-    private int tracker = 0;
+    private int tracker;
+    private List<int> origIndexes = new List<int>();
+    private List<int> shuffledIndexes = new List<int>();
+    private List<GameObject> existingButtonsList = new List<GameObject>();
 
     // Public variables
     public QuizData quizDataScript;  // reference Quiz data script to access data
@@ -25,24 +29,32 @@ public class QuizManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InitializeShuffledQns();
+
         ProceedNextTask(); // Generate first qns at the start
     }
 
-    // Update is called once per frame
-    void Update()
+    // Initialize shuffled array on start  eg. [0...5]
+    private void InitializeShuffledQns()
     {
+        for (int i=0; i < quizDataScript.questions.Length; i++)
+        {
+            origIndexes.Add(i);
+        }
 
+        shuffledIndexes = shuffleChoices(origIndexes);
+
+        Debug.Log(string.Join(", ", shuffledIndexes));
     }
 
     // To shuffle arrays
-    private string[] shuffleChoices(string[] choices)
+    private List<T> shuffleChoices<T>(List<T> choices)
     {
-        for (int j=0; j < choices.Length; j++)
+        for (int j=0; j < choices.Count; j++)
         {
-            string temp = choices[j];
+            int rand = Random.Range(j, choices.Count);
 
-            int rand = Random.Range(j, choices.Length);
-
+            T temp = choices[j];
             choices[j] = choices[rand];
             choices[rand] = temp;
         }
@@ -64,6 +76,20 @@ public class QuizManager : MonoBehaviour
         }
     }
 
+    // Clear prefabs in list
+    private void RemoveExistingButtons(List<GameObject> btnsPrefab)
+    {
+        foreach (GameObject prefab in btnsPrefab)
+        {
+            if (prefab != null)
+            {
+                Destroy(prefab);
+            }
+        }
+
+        btnsPrefab.Clear();
+    }
+
 
     // Randomize + Instantiate Choices buttons from respective Question
     public void ChoicesManager(string[][] choiceArray, int randNum)
@@ -71,16 +97,15 @@ public class QuizManager : MonoBehaviour
         int numChoices = choiceArray[randNum].Length; // the number of items in each array
 
         // Array of shuffled choices
-        string[] shuffleChoicesArray = shuffleChoices(choiceArray[randNum]);
+        List<string> choicesList = choiceArray[randNum].ToList();
+        List<string> shuffleChoicesArray = shuffleChoices(choicesList);
 
         for (int i=0; i < numChoices; i++)  // instantiate no. of times based on given choices
         {
             GameObject choiceBtn = Instantiate(choicePrefab, parentChoices);
+            choiceBtn.name = choicePrefab.name + i;  // instantiated name label for identifying
 
-            //if (shuffleChoicesArray[i] == origData.choices[randNum][0])
-            //{
-            //    quizDataScript.indexCorrectPos = i;
-            //}
+            existingButtonsList.Add(choiceBtn);
 
             DescendantsDefaultState(choiceBtn.transform, shuffleChoicesArray[i]);
         }
@@ -89,19 +114,27 @@ public class QuizManager : MonoBehaviour
     // Generate New Content
     public void ProceedNextTask()
     {
-        tracker += 1;
-
-        if (tracker == quizDataScript.questions.Length + 1)
+        if (shuffledIndexes.Count == 0)
         {
             Debug.Log("Quiz completed");
             return;
         }
 
-        quizDataScript.RandomNumGenerator();
-        ChoicesManager(quizDataScript.choices, quizDataScript.randomNum - 1);
+        // Remove first index from shuffled list
+        quizDataScript.randomNum = shuffledIndexes[0];
+        shuffledIndexes.RemoveAt(0);
 
-        questionText.text = quizDataScript.questions[quizDataScript.randomNum - 1];  // Update qns text
+        //Debug.Log(string.Join(", ", shuffledIndexes));
+
+        // Clear existing buttons for new ones to populate
+        RemoveExistingButtons(existingButtonsList);
+
+        ChoicesManager(quizDataScript.choices, quizDataScript.randomNum);
+
+        questionText.text = quizDataScript.questions[quizDataScript.randomNum];  // Update qns text
+        
+        tracker = quizDataScript.questions.Length - shuffledIndexes.Count;  // Update counter text
         qnsCounterText.text = tracker.ToString() + " / " + quizDataScript.questions.Length.ToString();
-
     }
+        
 }

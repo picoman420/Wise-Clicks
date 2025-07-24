@@ -30,29 +30,4 @@ public class QuizData : MonoBehaviour
 
     // For getting index of qns + ans
     public int randomNum;
-
-    // List for ensuring no duplication when randomize
-    public List<int> currentRandNums = new List<int>();
-
-
-    // Ensure new random number produces, not duplicated
-    public void RandomNumGenerator()
-    {
-        randomNum = Random.Range(1, questions.Length + 1);  // create a number from 1 to stated number
-
-        if (currentRandNums.Count != 0)
-        {
-            for (int i = 0; i < currentRandNums.Count; i++)
-            {
-                if (currentRandNums[i] == randomNum)
-                {
-                    RandomNumGenerator();    // recursive back to generate another number
-                    return;                  // stop executing rest of code 
-                }
-            }
-        }
-
-        //Debug.Log("Random number: " + randomNum);
-        currentRandNums.Add(randomNum);
-    }
 }
