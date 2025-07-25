@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6265968605106913746}
   m_Layer: 5
   m_Name: Wrong
-  m_TagString: Untagged
+  m_TagString: Wrong
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

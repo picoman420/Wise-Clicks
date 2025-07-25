@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 // ------------------------------------------------------
@@ -12,6 +14,9 @@ public class QuizManager : MonoBehaviour
 {
     // Private variables
     private int tracker;
+    private int numWrongAns;
+    private Button mcqBtns;
+
     private List<int> origIndexes = new List<int>();
     private List<int> shuffledIndexes = new List<int>();
     private List<GameObject> existingButtonsList = new List<GameObject>();
@@ -25,12 +30,16 @@ public class QuizManager : MonoBehaviour
     public Transform parentChoices;
     public GameObject choicePrefab;
 
+    public GameObject nextBtn;
+
+    public GameObject completionMenu;
+    public TextMeshProUGUI score;
+
 
     // Start is called before the first frame update
     void Start()
     {
         InitializeShuffledQns();
-
         ProceedNextTask(); // Generate first qns at the start
     }
 
@@ -72,6 +81,11 @@ public class QuizManager : MonoBehaviour
                 child.gameObject.GetComponent<TMP_Text>().text = refText;
             }
 
+            if (child.gameObject.tag == "Wrong")
+            {
+                numWrongAns += 1;
+            }
+
             DescendantsDefaultState(child, refText);
         }
     }
@@ -86,8 +100,30 @@ public class QuizManager : MonoBehaviour
                 Destroy(prefab);
             }
         }
-
         btnsPrefab.Clear();
+    }
+
+    // Check for Buttons Clicked
+    private void TaskOnClick()
+    {
+        // Set visibility true for next btn
+        nextBtn.SetActive(true);
+
+        ScoreSystem(parentChoices);
+        //Debug.Log(numWrongAns);
+    }
+
+    // Score System (Search for wrong UI to indicate -- Score will not be saved)
+    private void ScoreSystem(Transform parent)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.gameObject.tag == "Wrong")
+            {
+                numWrongAns += 1;
+            }
+            ScoreSystem(child);
+        }
     }
 
 
@@ -105,7 +141,11 @@ public class QuizManager : MonoBehaviour
             GameObject choiceBtn = Instantiate(choicePrefab, parentChoices);
             choiceBtn.name = choicePrefab.name + i;  // instantiated name label for identifying
 
-            existingButtonsList.Add(choiceBtn);
+            // Check if buttons r clicked (no matter the order)
+            mcqBtns = choiceBtn.GetComponent<Button>();
+            mcqBtns.onClick.AddListener(TaskOnClick);
+
+            existingButtonsList.Add(choiceBtn);  // add buttons to list for tracking
 
             DescendantsDefaultState(choiceBtn.transform, shuffleChoicesArray[i]);
         }
@@ -117,6 +157,11 @@ public class QuizManager : MonoBehaviour
         if (shuffledIndexes.Count == 0)
         {
             Debug.Log("Quiz completed");
+            completionMenu.SetActive(true);
+
+            int correctAns = quizDataScript.questions.Length - numWrongAns;
+            score.text = correctAns + " / " + quizDataScript.questions.Length;
+
             return;
         }
 
@@ -124,17 +169,34 @@ public class QuizManager : MonoBehaviour
         quizDataScript.randomNum = shuffledIndexes[0];
         shuffledIndexes.RemoveAt(0);
 
-        //Debug.Log(string.Join(", ", shuffledIndexes));
-
         // Clear existing buttons for new ones to populate
         RemoveExistingButtons(existingButtonsList);
 
         ChoicesManager(quizDataScript.choices, quizDataScript.randomNum);
 
-        questionText.text = quizDataScript.questions[quizDataScript.randomNum];  // Update qns text
-        
-        tracker = quizDataScript.questions.Length - shuffledIndexes.Count;  // Update counter text
+        // Update qns text
+        questionText.text = quizDataScript.questions[quizDataScript.randomNum];
+
+        // Update counter text
+        tracker = quizDataScript.questions.Length - shuffledIndexes.Count;
         qnsCounterText.text = tracker.ToString() + " / " + quizDataScript.questions.Length.ToString();
+
+        nextBtn.SetActive(false);
     }
-        
+
+    // Restart functionality
+    public void Restart()
+    {
+        numWrongAns = 0;
+        shuffledIndexes.Clear();  // clear shuffled indexes
+        completionMenu.SetActive(false);
+
+        InitializeShuffledQns();
+        ProceedNextTask();        // Generate new set of questions
+    }
+
+    public void ExitToHome()
+    {
+        SceneManager.LoadScene("HomeScene");
+    }
 }

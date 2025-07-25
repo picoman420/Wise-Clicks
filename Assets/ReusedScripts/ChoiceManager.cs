@@ -17,10 +17,11 @@ public class ChoiceManager : MonoBehaviour
     public Transform positionUI;
     public GameObject wrongUI;
     public GameObject correctUI;
-    public bool clicked;
 
     // Private variables
     private Transform selectedChoiceText;
+    private bool clicked;
+
 
     void Update()
     {
