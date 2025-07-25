@@ -160,7 +160,9 @@ public class QuizManager : MonoBehaviour
             completionMenu.SetActive(true);
 
             int correctAns = quizDataScript.questions.Length - numWrongAns;
-            score.text = correctAns + " / " + quizDataScript.questions.Length;
+
+            decimal finalPercent = ((decimal)correctAns / (decimal)quizDataScript.questions.Length) * 100m;
+            score.text = finalPercent + "%";
 
             return;
         }
