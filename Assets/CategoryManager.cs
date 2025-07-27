@@ -9,12 +9,12 @@ public class CategoryManager : MonoBehaviour
 
     public GameObject gameGuide;
 
-    //public GameObject quizGuide;
+    public GameObject quizGuide;
 
     void Start()
     {
         gameGuide.SetActive(false);
-        //quizGuide.SetActive(false);
+        quizGuide.SetActive(false);
     }
 
     public void LoadScene()
@@ -36,15 +36,15 @@ public class CategoryManager : MonoBehaviour
             gameGuide.SetActive(true);
         }
 
-        //if (scene == "") // Selected Quiz 
-        //{
-        //    quizGuide.SetActive(true);
-        //}
+        if (scene == "QuizScene") // Selected Quiz 
+        {
+            quizGuide.SetActive(true);
+        }
     }
 
     public void GoQuiz()
     {
-        scene = "";
+        scene = "QuizScene";
     }
 
     public void GoGame()
