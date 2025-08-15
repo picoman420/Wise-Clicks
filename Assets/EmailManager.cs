@@ -20,27 +20,29 @@ public class EmailManager : MonoBehaviour
     private string[] hints = {
         "If it sounds too good to be true, it probably is.",
         "If it sounds too good to be true, it probably is.",
-        "Check if sender email is legitimate.",
+        "If it sounds too good to be true, it probably is.",
         "If it sounds too good to be true, it probably is.",
         "Any sensitive personal information asked?",
-        "Check if sender email is legitimate.",
+        "Any actions required from you?",
         "Spelling or grammatical errors are a giveaway.",
         "Any suspicious website links provided?",
+        "Any actions required from you?",
+        "Any suspicious actions required from you?",
         "Check if sender email is legitimate.",
-        "Any sensitive personal information asked?",
     };
 
     // for correct section
     private string[] corrects = {
         "Correct! This is a SCAM.",
         "Correct! This is a SCAM.",
-        "Correct! This is a REAL message.",
-        "Correct! This is a SCAM.",
-        "Correct! This is a REAL message.",
-        "Correct! This is a REAL message.",
         "Correct! This is a SCAM.",
         "Correct! This is a SCAM.",
         "Correct! This is a REAL message.",
+        "Correct! This is a REAL message.",
+        "Correct! This is a SCAM.",
+        "Correct! This is a SCAM.",
+        "Correct! This is a REAL message.",
+        "Correct! This is a SCAM.",
         "Correct! This is a SCAM.",
     };
 
@@ -48,13 +50,14 @@ public class EmailManager : MonoBehaviour
     private string[] wrongs = {
         "Incorrect! This is a SCAM.",
         "Incorrect! This is a SCAM.",
-        "Incorrect! This is a REAL message.",
-        "Incorrect! This is a SCAM.",
-        "Incorrect! This is a REAL message.",
-        "Incorrect! This is a REAL message.",
         "Incorrect! This is a SCAM.",
         "Incorrect! This is a SCAM.",
         "Incorrect! This is a REAL message.",
+        "Incorrect! This is a REAL message.",
+        "Incorrect! This is a SCAM.",
+        "Incorrect! This is a SCAM.",
+        "Incorrect! This is a REAL message.",
+        "Incorrect! This is a SCAM.",
         "Incorrect! This is a SCAM.",
     };
 
