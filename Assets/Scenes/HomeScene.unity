@@ -4499,11 +4499,11 @@ PrefabInstance:
       propertyPath: m_text
       value: "Every day, scammers target people through messages, emails, and job
         offers. \nIn this realistic simulation, you\u2019ll explore a phone interface
-        just like your own, filled with genuine and fake communications. \nAcross
-        4 levels, you\u2019ll learn to recognize red flags, question suspicious messages,
-        and make confident choices to stay safe. \nPractice spotting scams in a risk-free
-        environment, and build practical skills to protect yourself and others from
-        fraud in the real world."
+        just like your own, filled with genuine and fake communications. \nYou\u2019ll
+        learn to recognize red flags, question suspicious messages, and make confident
+        choices to stay safe. \nPractice spotting scams in a risk-free environment,
+        and build practical skills to protect yourself and others from fraud in the
+        real world."
       objectReference: {fileID: 0}
     - target: {fileID: 722356562095301255, guid: cac1b875eb4cf4f4f853213b28b77804, type: 3}
       propertyPath: m_fontSize

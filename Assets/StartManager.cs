@@ -8,4 +8,9 @@ public class StartManager : MonoBehaviour
     {
         SceneManager.LoadScene("LanguageScene");
     }
+
+    public void LoadLoginScene()
+    {
+        SceneManager.LoadScene("LoginScene");
+    }
 }

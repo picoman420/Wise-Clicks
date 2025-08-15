@@ -19,15 +19,17 @@ public class MessageManager : MonoBehaviour
     // Data texts for output
     // for hint section
     private string[] hints = {
-        "If it sounds too good to be true, it probably is.",
+        "Becareful of unexpected messages from unknown.",
         "Check if domain link is legitimate.",
         "If it sounds too good to be true, it probably is.",
-        "Spelling or grammatical errors are a giveaway.",
-        "If it sounds too good to be true, it probably is.",
+        "Any suspicious website links provided?",
+        "Be wary of suspicious or unusual website links.",
         "Any action required from your end?",
         "Be wary of suspicious or unusual website links.",
         "Any suspicious website links provided?",
         "If it sounds too good to be true, it probably is.",
+        "Check if domain link is legitimate.",
+        "Check if domain link is legitimate.",
         "If it sounds too good to be true, it probably is.",
         "Check if domain link is legitimate.",
         "If it sounds too good to be true, it probably is.",
@@ -47,6 +49,8 @@ public class MessageManager : MonoBehaviour
         "Correct! This is a SCAM.",
         "Correct! This is a SCAM.",
         "Correct! This is a SCAM.",
+        "Correct! This is a REAL website.",
+        "Correct! This is a SCAM.",
     };
 
     // for wrong section
@@ -62,6 +66,8 @@ public class MessageManager : MonoBehaviour
         "Incorrect! This is a SCAM.",
         "Incorrect! This is a SCAM.",
         "Incorrect! This is a SCAM.",
+        "Incorrect! This is a SCAM.",
+        "Incorrect! This is a REAL website.",
         "Incorrect! This is a SCAM.",
     };
 
