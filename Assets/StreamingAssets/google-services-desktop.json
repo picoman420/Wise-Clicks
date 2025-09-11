@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "789582212944",
+    "project_id": "wiseclicks-fe166",
+    "storage_bucket": "wiseclicks-fe166.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789582212944:android:88024b80c53bc135384655",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.WiseClicks"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqqPGA_K92U28H0dN3VKECQY1HGUK-Q2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
