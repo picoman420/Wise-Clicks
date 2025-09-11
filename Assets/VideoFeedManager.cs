@@ -24,11 +24,6 @@ public class VideoFeedManager : MonoBehaviour
 
         // Load initial video
         LoadVideoFromS3(currentVideoIndex);
-
-        // Add button listeners
-        legitimateButton.onClick.AddListener(OnLegitimateClicked);
-        scamButton.onClick.AddListener(OnScamClicked);
-        nextButton.onClick.AddListener(OnNextClicked);
     }
 
     void LoadVideoFromS3(int index)
@@ -46,20 +41,35 @@ public class VideoFeedManager : MonoBehaviour
         videoPlayer.Prepare();
     }
 
-    void OnLegitimateClicked()
+    public void OnLegitimateClicked()
     {
         Debug.Log($"Video {currentVideoIndex + 1} marked as Legitimate!");
     }
 
-    void OnScamClicked()
+    public void OnScamClicked()
     {
         Debug.Log($"Video {currentVideoIndex + 1} marked as Scam!");
     }
 
-    void OnNextClicked()
+    public void OnNextClicked()
     {
         currentVideoIndex = (currentVideoIndex + 1) % videoUrls.Length;
         LoadVideoFromS3(currentVideoIndex);
         Debug.Log($"Switched to Video {currentVideoIndex + 1}");
+    }
+
+    public void VideoResume()
+    {
+        videoPlayer.Play();
+    }
+
+    public void VideoPause()
+    {
+        videoPlayer.Pause();
+    }
+
+    public void testClick()
+    {
+        Application.Quit();
     }
 }
