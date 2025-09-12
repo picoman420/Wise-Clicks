@@ -65,7 +65,7 @@ public class ButtonsManager : MonoBehaviour
         {
             currentIndex = activePrefabs.IndexOf(currentBtn);
             Destroy(currentBtn);  // Destroy in game
-            Debug.Log($"Destroyed main button at index {currentIndex}, Counter: {counter}");
+            //Debug.Log($"Destroyed main button at index {currentIndex}, Counter: {counter}");
         }
         else
         {
@@ -89,7 +89,7 @@ public class ButtonsManager : MonoBehaviour
         if (shouldCount)
         {
             counter++; // Increment only when OK is clicked after task completion
-            Debug.Log($"Task completed, Counter incremented to: {counter}");
+            //Debug.Log($"Task completed, Counter incremented to: {counter}");
         }
         else
         {

@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
         }
         PlayerPrefs.SetInt($"{leaderboardKey}_count", leaderboard.Count);
         PlayerPrefs.Save();
-        Debug.Log($"Score saved for {playerName} with score {accountBalance}");
+        //Debug.Log($"Score saved for {playerName} with score {accountBalance}");
     }
 
     public List<LeaderboardEntry> LoadLeaderboard()
