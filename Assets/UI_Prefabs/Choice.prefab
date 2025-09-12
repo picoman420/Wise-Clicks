@@ -133,7 +133,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 16
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 2938109243033240421}
   - component: {fileID: 2938109243033240420}
   - component: {fileID: 4213505262682790692}
-  - component: {fileID: 7378051507437900572}
+  - component: {fileID: 1690683876160852974}
   m_Layer: 0
   m_Name: Choice
   m_TagString: Untagged
@@ -317,11 +317,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef932f006d51a74781d40e20bdfe979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quizDataScript: {fileID: 7378051507437900572}
+  quizDataScript: {fileID: 1690683876160852974}
   positionUI: {fileID: 2600013538083408554}
   wrongUI: {fileID: 6265968605106913748, guid: 08ecfb2ddf4c5c24191294c479309b3f, type: 3}
   correctUI: {fileID: 5411150701861162596, guid: 51b629159c0bc024ca748598cfc575f2, type: 3}
---- !u!114 &7378051507437900572
+--- !u!114 &1690683876160852974
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -335,8 +335,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questions:
   - What helpline number should you call when you're unsure if it's a scam?
-  - What will Government Officials NEVER do over a phone call?
-  - Which of the following is TRUE?
-  - Which one is the REAL ScamShield website link?
+  - A caller claims to be from your bank and asks for your account password to verify
+    your identity. What should you do?
+  - If your friend asks you for money because of an emergency, what should you do?
   - When is the ScamShield Helpline available?
+  - Which is the safest action if you receive a suspicious link online?
+  - "If an email has the company\u2019s official logo, it must be safe."
+  - Banks / Government agencies will NEVER ask you to transfer money.
+  - "Scammers only target older people who aren\u2019t tech-savvy."
+  - Banks / Government agencies will transfer your call to Police.
+  - Your friend sent you a link to a 'viral video of you'. What do you do?
   randomNum: 0

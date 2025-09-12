@@ -9,9 +9,11 @@ public class CallManager : MonoBehaviour
 
     public TextMeshProUGUI correctText;
     public TextMeshProUGUI wrongText;
+    public GameObject[] audioBtns;
 
     private ButtonsManager buttonsManager; // reference instance of the script
     private UpdatePoints updatePoints; // reference instance of the script
+
 
     // for correct section
     private string[] corrects = {
@@ -33,8 +35,26 @@ public class CallManager : MonoBehaviour
         }
     }
 
+    // Get specific audio btns clicked
+    public void AudioBtnClicked()
+    {
+        GameObject thisAudioBtn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+        thisAudioBtn.GetComponent<AudioSource>().Play();
+    }
+
+    // To stop all current audio 
+    public void StopTTSAudio()
+    {
+        foreach (GameObject audioB in audioBtns)
+        {
+            audioB.GetComponent<AudioSource>().Stop();
+        }
+    }
+
     public void CorrectAnsClicked()
     {
+        StopTTSAudio();
+
         if (buttonsManager != null && correctText != null)
         {
             buttonsManager.correctBar.SetActive(true);
@@ -55,6 +75,8 @@ public class CallManager : MonoBehaviour
 
     public void WrongAnsClicked()
     {
+        StopTTSAudio();
+
         if (buttonsManager != null && wrongText != null)
         {
             buttonsManager.wrongBar.SetActive(true);
@@ -72,4 +94,7 @@ public class CallManager : MonoBehaviour
             buttonsManager.ChangeColors(parentPopup, false);
         }
     }
+
+
+
 }

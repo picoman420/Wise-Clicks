@@ -1025,7 +1025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba7438d402bfc449b85e6d8baeb1876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quizDataScript: {fileID: 7378051507437900572, guid: af2c511a227670a4fb94de2ccde8880e, type: 3}
+  quizDataScript: {fileID: 1690683876160852974, guid: af2c511a227670a4fb94de2ccde8880e, type: 3}
   questionText: {fileID: 2086589365}
   qnsCounterText: {fileID: 1369209734}
   parentChoices: {fileID: 924179397546955274}
