@@ -1014,6 +1014,7 @@ m_PackageAssets:
         - 3.0.35
         - 3.0.36
         - 3.0.37
+        - 3.0.38
         compatible:
         - 1.0.2
         - 1.0.6
@@ -1320,6 +1321,7 @@ m_PackageAssets:
         - 1.4.3
         - 1.4.4
         - 1.4.5
+        - 1.4.6
         compatible:
         - 0.1.5-preview
         - 0.2.7-preview
@@ -1432,6 +1434,7 @@ m_PackageAssets:
         - 2.3.2
         - 2.4.0
         - 2.4.1
+        - 2.4.2
         compatible:
         - 1.0.0-preview.4
         - 1.0.0-preview.5
