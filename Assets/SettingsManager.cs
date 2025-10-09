@@ -10,6 +10,8 @@ public class SettingsManager : MonoBehaviour
     public TMP_Text currentUsername;
     public TMP_InputField newUsername;  // Input field to display and edit the name
 
+    private TouchScreenKeyboard keyboard;
+
     void Start()
     {
         audioSlider.onValueChanged.AddListener(OnAudioValueChanged);
@@ -63,4 +65,8 @@ public class SettingsManager : MonoBehaviour
         SceneManager.LoadScene("HomeScene");
     }
 
+    public void OpenKeyboard()
+    {
+        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, true, true);
+    }
 }
