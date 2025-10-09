@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class LoginManager : MonoBehaviour
 {
     public TMP_InputField nameInputField;
-    private TouchScreenKeyboard keyboard;
 
     public void OnLoginClicked()
     {
@@ -31,10 +30,5 @@ public class LoginManager : MonoBehaviour
         {
             Debug.LogWarning("Please enter a valid name.");
         }
-    }
-
-    public void OpenKeyboard()
-    {
-        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, true, true);
     }
 }
